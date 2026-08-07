@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoEuropa — Recherche de véhicules d'occasion en Europe</title>
+<meta name="description" content="Comparez les annonces de voitures d'occasion publiées en Allemagne, France, Belgique, Espagne, Italie, Pays-Bas et au Royaume-Uni.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#111;line-height:1.5;overflow-x:hidden}
+button,input,select{font-family:inherit;font-size:inherit}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* TOKENS */
+:root{
+  --c-bg:#f7f7f8;
+  --c-line:#e4e4e7;
+  --c-line2:#d1d1d6;
+  --c-muted:#71717a;
+  --c-body:#3f3f46;
+  --c-title:#18181b;
+  --c-accent:#0052cc;
+  --c-acc-bg:#eff4ff;
+  --c-acc-hover:#0041a8;
+  --c-green:#16a34a;
+  --c-green-bg:#f0fdf4;
+  --c-orange:#c2410c;
+  --c-orange-bg:#fff7ed;
+  --r:6px;
+  --sh:0 1px 2px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.04);
+  --sh2:0 2px 8px rgba(0,0,0,.08);
+  --max:1160px;
+}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;background:#fff;border-bottom:1px solid var(--c-line);display:flex;align-items:center}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;width:100%;display:flex;align-items:center;gap:16px}
+.logo{font-size:16px;font-weight:600;color:var(--c-title);letter-spacing:-.2px;white-space:nowrap;cursor:pointer;flex-shrink:0}
+.logo b{color:var(--c-accent);font-weight:600}
+.nav-s{flex:1;max-width:340px;position:relative}
+.nav-s input{width:100%;padding:6px 10px 6px 30px;background:var(--c-bg);border:1px solid var(--c-line2);border-radius:var(--r);font-size:13px;color:var(--c-title);outline:none;transition:border-color .12s,box-shadow .12s}
+.nav-s input:focus{border-color:var(--c-accent);box-shadow:0 0 0 2px rgba(0,82,204,.12);background:#fff}
+.nav-s input::placeholder{color:#a1a1aa}
+.nav-s svg{position:absolute;left:8px;top:50%;transform:translateY(-50%);color:#a1a1aa;pointer-events:none}
+.nav-r{margin-left:auto;display:flex;align-items:center;gap:6px}
+.nb{padding:5px 12px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer;transition:background .1s;border:1px solid transparent;background:none;color:var(--c-body)}
+.nb:hover{background:var(--c-bg)}
+.nb.p{background:var(--c-accent);color:#fff;border-color:var(--c-accent)}
+.nb.p:hover{background:var(--c-acc-hover)}
+
+/* HERO — compact */
+.hero{padding:72px 20px 20px;background:#fff;border-bottom:1px solid var(--c-line)}
+.hero-in{max-width:var(--max);margin:0 auto}
+.hero-top{max-width:700px;margin:0 auto 14px;text-align:center}
+.hero-h{font-size:22px;font-weight:600;color:var(--c-title);letter-spacing:-.3px;margin-bottom:4px}
+.hero-sub{font-size:13px;color:var(--c-muted)}
+
+/* SEARCH */
+.sbar{display:flex;border:1px solid var(--c-line2);border-radius:8px;overflow:hidden;background:#fff;box-shadow:var(--sh2);max-width:680px;margin:0 auto 12px}
+.sbar:focus-within{border-color:var(--c-accent);box-shadow:0 0 0 2px rgba(0,82,204,.1),var(--sh2)}
+.sbar input{flex:1;padding:11px 14px;border:none;outline:none;font-size:14px;color:var(--c-title);background:none;min-width:0}
+.sbar input::placeholder{color:#a1a1aa}
+.sbar-sep{width:1px;background:var(--c-line);flex-shrink:0}
+.sbar-f{padding:0 14px;background:none;border:none;font-size:13px;color:var(--c-body);cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap;transition:color .1s}
+.sbar-f:hover{color:var(--c-accent)}
+.sbar-go{padding:0 18px;background:var(--c-accent);border:none;color:#fff;font-size:13px;font-weight:500;cursor:pointer;transition:background .1s;white-space:nowrap;flex-shrink:0}
+.sbar-go:hover{background:var(--c-acc-hover)}
+
+/* QUICK FILTERS */
+.qf{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.qf-pill{padding:4px 12px;border-radius:99px;border:1px solid var(--c-line2);background:#fff;font-size:12px;color:var(--c-body);cursor:pointer;transition:all .1s;white-space:nowrap}
+.qf-pill:hover{border-color:var(--c-accent);color:var(--c-accent);background:var(--c-acc-bg)}
+
+/* PAGE WRAPPER */
+.page{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+/* SECTION */
+.sec{padding:24px 0;border-bottom:1px solid var(--c-line)}
+.sec:last-child{border-bottom:none}
+.sec-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px}
+.sec-t{font-size:15px;font-weight:600;color:var(--c-title)}
+.sec-n{font-size:12px;color:var(--c-muted);font-weight:400;margin-left:6px}
+.sec-a{font-size:12px;color:var(--c-accent);background:none;border:none;cursor:pointer;padding:0;white-space:nowrap}
+.sec-a:hover{text-decoration:underline}
+
+/* GRILLE DE CARDS */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+/* CARD VÉHICULE */
+.vc{border:1px solid var(--c-line);border-radius:var(--r);background:#fff;overflow:hidden;cursor:pointer;transition:border-color .12s,box-shadow .12s}
+.vc:hover{border-color:var(--c-line2);box-shadow:var(--sh2)}
+
+.vc-img{position:relative;overflow:hidden;background:var(--c-bg)}
+.vc-img img{width:100%;height:100%;object-fit:cover;transition:transform .25s;display:block}
+.vc:hover .vc-img img{transform:scale(1.02)}
+.vc-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+/* heights variés — naturel */
+.vc-img{height:168px}
+.vc:nth-child(3n+1) .vc-img{height:172px}
+.vc:nth-child(5n+2) .vc-img{height:162px}
+
+.vc-badge{position:absolute;top:7px;left:7px;padding:2px 6px;border-radius:3px;font-size:10px;font-weight:600;line-height:1.4}
+.vc-badge.deal{background:#fff;color:var(--c-green);border:1px solid #bbf7d0}
+.vc-badge.new{background:#fff;color:var(--c-accent);border:1px solid #bfdbfe}
+.vc-fav{position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;color:#a1a1aa;transition:all .1s}
+.vc-fav:hover,.vc-fav.on{color:#ef4444;border-color:#fca5a5;background:#fff}
+.vc-src{position:absolute;bottom:6px;right:6px;padding:2px 6px;border-radius:3px;background:rgba(255,255,255,.9);font-size:10px;color:var(--c-muted);border:1px solid rgba(0,0,0,.08)}
+.vc-flag{position:absolute;bottom:6px;left:7px;font-size:14px;line-height:1}
+
+.vc-body{padding:10px 12px 12px}
+.vc-name{font-size:13px;font-weight:600;color:var(--c-title);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:1px}
+.vc-var{font-size:11px;color:var(--c-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:8px;min-height:15px}
+.vc-specs{display:flex;align-items:center;gap:0;margin-bottom:8px;flex-wrap:nowrap;overflow:hidden}
+.vc-spec{font-size:11px;color:var(--c-body);white-space:nowrap}
+.vc-dot{color:var(--c-line2);margin:0 5px;font-size:10px}
+.vc-price{font-size:17px;font-weight:600;color:var(--c-title);letter-spacing:-.2px;margin-bottom:2px}
+.vc-price-note{font-size:10px;color:var(--c-green);font-weight:500}
+.vc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid var(--c-line);gap:6px}
+.vc-loc{font-size:10px;color:var(--c-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vc-cta{padding:4px 10px;border-radius:4px;border:1px solid var(--c-line2);background:#fff;font-size:11px;font-weight:500;color:var(--c-body);cursor:pointer;transition:all .1s;white-space:nowrap;flex-shrink:0}
+.vc-cta:hover{border-color:var(--c-accent);color:var(--c-accent);background:var(--c-acc-bg)}
+
+/* SCORE */
+.vc-score{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.vc-score-bar{flex:1;height:2px;background:var(--c-line);border-radius:99px;overflow:hidden}
+.vc-score-fill{height:100%;border-radius:99px}
+.vc-score-n{font-size:10px;color:var(--c-muted);min-width:18px;text-align:right}
+
+/* SCROLL HORIZONTAL */
+.hscroll{overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}
+.hscroll::-webkit-scrollbar{display:none}
+.hs-inner{display:flex;gap:10px;padding-bottom:2px}
+.hs-inner .vc{min-width:218px;max-width:218px;flex-shrink:0}
+
+/* MARQUES */
+.makes{display:flex;gap:6px;flex-wrap:wrap}
+.make-tag{padding:5px 12px;border-radius:99px;border:1px solid var(--c-line2);background:#fff;font-size:13px;color:var(--c-body);cursor:pointer;transition:all .1s;white-space:nowrap}
+.make-tag:hover{border-color:var(--c-accent);color:var(--c-accent)}
+
+/* PAYS */
+.countries{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.countries::-webkit-scrollbar{display:none}
+.country{display:flex;align-items:center;gap:5px;padding:5px 12px;border-radius:99px;border:1px solid var(--c-line2);background:#fff;font-size:12px;color:var(--c-body);cursor:pointer;transition:all .1s;white-space:nowrap;flex-shrink:0}
+.country:hover,.country.on{border-color:var(--c-accent);color:var(--c-accent);background:var(--c-acc-bg)}
+.country-flag{font-size:14px}
+.country-n{font-size:10px;color:var(--c-muted);margin-left:2px}
+
+/* CATÉGORIES */
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+.cat{border:1px solid var(--c-line);border-radius:var(--r);padding:20px 10px 14px;text-align:center;cursor:pointer;transition:all .1s;background:#fff}
+.cat:hover{border-color:var(--c-accent);background:var(--c-acc-bg)}
+.cat svg{margin:0 auto 6px;display:block;color:var(--c-muted)}
+.cat:hover svg{color:var(--c-accent)}
+.cat-l{font-size:12px;font-weight:500;color:var(--c-body)}
+.cat-n{font-size:10px;color:var(--c-muted);margin-top:2px}
+
+/* SKELETON */
+.sk{background:linear-gradient(90deg,#f1f1f1 25%,#e8e8e8 50%,#f1f1f1 75%);background-size:200%;animation:sk 1s linear infinite;border-radius:3px}
+@keyframes sk{0%{background-position:200%}100%{background-position:-200%}}
+.sk-card{border:1px solid var(--c-line);border-radius:var(--r);overflow:hidden}
+.sk-img{background:#f1f1f1}
+.sk-bd{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.sk-ln{height:11px;border-radius:3px}
+
+/* MODAL FILTRES */
+.ov{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.35);display:none;align-items:flex-start;justify-content:center;padding:60px 16px 20px;overflow-y:auto}
+.ov.open{display:flex}
+.modal{background:#fff;border-radius:10px;width:100%;max-width:640px;box-shadow:0 20px 60px rgba(0,0,0,.15);animation:mIn .16s ease}
+@keyframes mIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.mhdr{padding:16px 20px;border-bottom:1px solid var(--c-line);display:flex;align-items:center;justify-content:space-between}
+.mhdr-t{font-size:15px;font-weight:600}
+.mcl{width:28px;height:28px;border-radius:50%;border:1px solid var(--c-line);background:none;font-size:16px;color:var(--c-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .1s}
+.mcl:hover{background:var(--c-bg)}
+.mbody{padding:20px}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mgrp{display:flex;flex-direction:column;gap:5px}
+.mgrp.full{grid-column:1/-1}
+.mlbl{font-size:11px;font-weight:500;color:var(--c-muted);text-transform:uppercase;letter-spacing:.04em}
+.minput{padding:7px 10px;border:1px solid var(--c-line2);border-radius:var(--r);font-size:13px;color:var(--c-title);outline:none;transition:border-color .12s,box-shadow .12s;width:100%;background:#fff}
+.minput:focus{border-color:var(--c-accent);box-shadow:0 0 0 2px rgba(0,82,204,.1)}
+.mrow{display:flex;gap:6px}
+.mrow .minput{flex:1}
+.tags{display:flex;gap:5px;flex-wrap:wrap}
+.tag{padding:4px 10px;border-radius:4px;border:1px solid var(--c-line2);background:#fff;font-size:12px;color:var(--c-body);cursor:pointer;transition:all .1s}
+.tag:hover,.tag.on{border-color:var(--c-accent);color:var(--c-accent);background:var(--c-acc-bg)}
+.mfoot{padding:12px 20px;border-top:1px solid var(--c-line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.btn{padding:7px 18px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer;transition:all .1s;border:none}
+.btn-ghost{background:var(--c-bg);color:var(--c-body);border:1px solid var(--c-line2)}
+.btn-ghost:hover{background:#e4e4e7}
+.btn-primary{background:var(--c-accent);color:#fff}
+.btn-primary:hover{background:var(--c-acc-hover)}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--c-title);color:#fff;padding:8px 14px;border-radius:var(--r);font-size:12px;display:none;z-index:999;white-space:nowrap;box-shadow:var(--sh2)}
+.toast.show{display:block;animation:tIn .18s ease}
+@keyframes tIn{from{opacity:0;transform:translateX(-50%) translateY(4px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* FOOTER */
+footer{background:var(--c-bg);border-top:1px solid var(--c-line);padding:32px 20px;margin-top:0}
+.f-in{max-width:var(--max);margin:0 auto}
+.f-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:32px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--c-line)}
+.f-logo{font-size:15px;font-weight:600;margin-bottom:8px}
+.f-logo b{color:var(--c-accent);font-weight:600}
+.f-desc{font-size:12px;color:var(--c-muted);line-height:1.6;max-width:260px}
+.f-col-t{font-size:11px;font-weight:600;color:var(--c-title);margin-bottom:10px;letter-spacing:.02em}
+.f-col a{display:block;font-size:12px;color:var(--c-muted);padding:3px 0;cursor:pointer;transition:color .1s}
+.f-col a:hover{color:var(--c-accent)}
+.f-bot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.f-leg{display:flex;gap:14px;flex-wrap:wrap}
+.f-leg a{font-size:11px;color:var(--c-muted);cursor:pointer;transition:color .1s}
+.f-leg a:hover{color:var(--c-title)}
+.f-copy{font-size:11px;color:var(--c-muted)}
+
+/* RESPONSIVE */
+@media(max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr)}.f-top{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid-4{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr}.nav-s{display:none}.f-top{grid-template-columns:1fr}.cats{grid-template-columns:repeat(4,1fr)}.mgrid{grid-template-columns:1fr}}
+@media(max-width:380px){.grid-4{grid-template-columns:1fr}.cats{grid-template-columns:repeat(3,1fr)}}
+
+.cat svg{display:block;margin:0 auto 8px;width:80px;height:40px}
+
+/* ── MODE SOMBRE ─────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-bg:       #1a1a1a;
+    --c-line:     #333333;
+    --c-line2:    #444444;
+    --c-muted:    #999999;
+    --c-body:     #d4d4d4;
+    --c-title:    #f0f0f0;
+    --c-accent:   #7aa8d4;
+    --c-acc-bg:   #1e2d3d;
+    --c-acc-hover:#5a82b3;
+  }
+  body { background: #1a1a1a; color: #d4d4d4; }
+  .nav, footer { background: #1f1f1f; border-color: #333; }
+  .card, .deal-card, .cat, .brand-item,
+  .country-item, .news-item { background: #242424; border-color: #333; }
+  .cat:hover { background: #1e2d3d; border-color: #5a82b3; }
+  input, select { background: #2a2a2a; border-color: #444; color: #f0f0f0; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <div class="logo" onclick="location.reload()">Auto<b>Europa</b></div>
+    <div class="nav-s">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input placeholder="Marque, modèle, ville…" id="navQ" onkeydown="if(event.key==='Enter')doSearch(this.value)">
+    </div>
+    <div class="nav-r">
+      <button class="nb" onclick="openFilters()">Filtres</button>
+      <button class="nb p" onclick="showToast('Connexion disponible sur la page principale')">Connexion</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO — compact -->
+<div class="hero">
+  <div class="hero-in">
+    <div class="hero-top">
+      <h1 class="hero-h">Recherche de véhicules d'occasion en Europe</h1>
+      <p class="hero-sub">Annonces publiées en Allemagne, France, Belgique, Espagne, Italie, Pays-Bas et au Royaume-Uni.</p>
+    </div>
+    <div class="sbar">
+      <input id="heroQ" placeholder="BMW Série 3, diesel, moins de 20 000 €…" onkeydown="if(event.key==='Enter')doSearch(this.value)">
+      <div class="sbar-sep"></div>
+      <button class="sbar-f" onclick="openFilters()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+        Filtres avancés
+      </button>
+      <button class="sbar-go" onclick="doSearch(document.getElementById('heroQ').value)">Rechercher</button>
+    </div>
+    <div class="qf">
+      <div class="qf-pill" onclick="go('search.html?fuel=Diesel')">Diesel</div>
+      <div class="qf-pill" onclick="go('search.html?fuel=Essence')">Essence</div>
+      <div class="qf-pill" onclick="go('search.html?fuel=Électrique')">Électrique</div>
+      <div class="qf-pill" onclick="go('search.html?fuel=Hybride')">Hybride</div>
+      <div class="qf-pill" onclick="go('search.html?pmax=15000')">Moins de 15 000 €</div>
+      <div class="qf-pill" onclick="go('search.html?pmax=25000')">Moins de 25 000 €</div>
+      <div class="qf-pill" onclick="go('search.html?seller=Particulier')">Particuliers uniquement</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- 1. SUGGESTIONS -->
+  <div class="sec">
+    <div class="sec-h">
+      <div>
+        <span class="sec-t" id="sugTitle">Chargement…</span>
+        <span class="sec-n" id="sugCount"></span>
+      </div>
+      <button class="sec-a" onclick="go('search.html')">Voir toutes les annonces</button>
+    </div>
+    <div class="grid-4" id="sugGrid">
+      <div class="sk-card"><div class="sk sk-img" style="height:168px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:68%"></div><div class="sk sk-ln" style="width:50%"></div><div class="sk sk-ln" style="width:38%;height:16px;margin-top:4px"></div></div></div>
+      <div class="sk-card"><div class="sk sk-img" style="height:172px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:75%"></div><div class="sk sk-ln" style="width:55%"></div><div class="sk sk-ln" style="width:44%;height:16px;margin-top:4px"></div></div></div>
+      <div class="sk-card"><div class="sk sk-img" style="height:165px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:60%"></div><div class="sk sk-ln" style="width:48%"></div><div class="sk sk-ln" style="width:35%;height:16px;margin-top:4px"></div></div></div>
+      <div class="sk-card"><div class="sk sk-img" style="height:168px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:72%"></div><div class="sk sk-ln" style="width:52%"></div><div class="sk sk-ln" style="width:42%;height:16px;margin-top:4px"></div></div></div>
+    </div>
+  </div>
+
+  <!-- 2. BONNES AFFAIRES -->
+  <div class="sec" id="dealsSec">
+    <div class="sec-h">
+      <span class="sec-t">Bonnes affaires</span>
+      <button class="sec-a" onclick="go('search.html?sort=score')">Voir plus</button>
+    </div>
+    <div class="hscroll">
+      <div class="hs-inner" id="dealsRow">
+        <div class="vc sk-card" style="min-width:218px"><div class="sk sk-img" style="height:168px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:70%"></div><div class="sk sk-ln" style="width:50%"></div></div></div>
+        <div class="vc sk-card" style="min-width:218px"><div class="sk sk-img" style="height:168px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:65%"></div><div class="sk sk-ln" style="width:55%"></div></div></div>
+        <div class="vc sk-card" style="min-width:218px"><div class="sk sk-img" style="height:168px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:80%"></div><div class="sk sk-ln" style="width:45%"></div></div></div>
+        <div class="vc sk-card" style="min-width:218px"><div class="sk sk-img" style="height:168px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:73%"></div><div class="sk sk-ln" style="width:48%"></div></div></div>
+        <div class="vc sk-card" style="min-width:218px"><div class="sk sk-img" style="height:168px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:67%"></div><div class="sk sk-ln" style="width:53%"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. NOUVELLES ANNONCES -->
+  <div class="sec">
+    <div class="sec-h">
+      <span class="sec-t">Nouvelles annonces</span>
+      <button class="sec-a" onclick="go('search.html?sort=recent')">Voir toutes</button>
+    </div>
+    <div class="grid-3" id="recentGrid">
+      <div class="sk-card"><div class="sk sk-img" style="height:172px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:70%"></div><div class="sk sk-ln" style="width:52%"></div><div class="sk sk-ln" style="width:38%;height:16px;margin-top:4px"></div></div></div>
+      <div class="sk-card"><div class="sk sk-img" style="height:168px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:63%"></div><div class="sk sk-ln" style="width:48%"></div><div class="sk sk-ln" style="width:42%;height:16px;margin-top:4px"></div></div></div>
+      <div class="sk-card"><div class="sk sk-img" style="height:172px"></div><div class="sk-bd"><div class="sk sk-ln" style="width:78%"></div><div class="sk sk-ln" style="width:55%"></div><div class="sk sk-ln" style="width:36%;height:16px;margin-top:4px"></div></div></div>
+    </div>
+  </div>
+
+  <!-- 4. MARQUES -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-t">Marques</span></div>
+    <div class="makes">
+      <div class="make-tag" onclick="go('search.html?make=Volkswagen')">Volkswagen</div>
+      <div class="make-tag" onclick="go('search.html?make=Peugeot')">Peugeot</div>
+      <div class="make-tag" onclick="go('search.html?make=Renault')">Renault</div>
+      <div class="make-tag" onclick="go('search.html?make=BMW')">BMW</div>
+      <div class="make-tag" onclick="go('search.html?make=Audi')">Audi</div>
+      <div class="make-tag" onclick="go('search.html?make=Citroën')">Citroën</div>
+      <div class="make-tag" onclick="go('search.html?make=Mercedes-Benz')">Mercedes-Benz</div>
+      <div class="make-tag" onclick="go('search.html?make=Toyota')">Toyota</div>
+      <div class="make-tag" onclick="go('search.html?make=Ford')">Ford</div>
+      <div class="make-tag" onclick="go('search.html?make=Opel')">Opel</div>
+      <div class="make-tag" onclick="go('search.html?make=Hyundai')">Hyundai</div>
+      <div class="make-tag" onclick="go('search.html?make=Kia')">Kia</div>
+      <div class="make-tag" onclick="go('search.html?make=Skoda')">Skoda</div>
+      <div class="make-tag" onclick="go('search.html?make=Tesla')">Tesla</div>
+      <div class="make-tag" onclick="go('search.html?make=Dacia')">Dacia</div>
+      <div class="make-tag" onclick="go('search.html?make=Volvo')">Volvo</div>
+      <div class="make-tag" onclick="go('search.html?make=Seat')">Seat</div>
+      <div class="make-tag" onclick="go('search.html?make=Fiat')">Fiat</div>
+    </div>
+  </div>
+
+  <!-- 5. PAYS -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-t">Par pays</span></div>
+    <div class="countries">
+      <div class="country on" onclick="setCountry(this,'')">
+        <span>Tous</span>
+        <span class="country-n" id="cnt-all"></span>
+      </div>
+      <div class="country" onclick="setCountry(this,'DE')">
+        <span class="country-flag">🇩🇪</span><span>Allemagne</span>
+        <span class="country-n" id="cnt-DE"></span>
+      </div>
+      <div class="country" onclick="setCountry(this,'FR')">
+        <span class="country-flag">🇫🇷</span><span>France</span>
+        <span class="country-n" id="cnt-FR"></span>
+      </div>
+      <div class="country" onclick="setCountry(this,'BE')">
+        <span class="country-flag">🇧🇪</span><span>Belgique</span>
+        <span class="country-n" id="cnt-BE"></span>
+      </div>
+      <div class="country" onclick="setCountry(this,'NL')">
+        <span class="country-flag">🇳🇱</span><span>Pays-Bas</span>
+        <span class="country-n" id="cnt-NL"></span>
+      </div>
+      <div class="country" onclick="setCountry(this,'ES')">
+        <span class="country-flag">🇪🇸</span><span>Espagne</span>
+        <span class="country-n" id="cnt-ES"></span>
+      </div>
+      <div class="country" onclick="setCountry(this,'IT')">
+        <span class="country-flag">🇮🇹</span><span>Italie</span>
+        <span class="country-n" id="cnt-IT"></span>
+      </div>
+      <div class="country" onclick="setCountry(this,'AT')">
+        <span class="country-flag">🇦🇹</span><span>Autriche</span>
+        <span class="country-n" id="cnt-AT"></span>
+      </div>
+      <div class="country" onclick="setCountry(this,'GB')">
+        <span class="country-flag">🇬🇧</span><span>Royaume-Uni</span>
+        <span class="country-n" id="cnt-GB"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. CATÉGORIES -->
+      <div class="sec" style="border-bottom:none">
+    <div class="sec-h"><span class="sec-t">Catégories</span></div>
+    <div class="cats">
+      <div class="cat" onclick="go('search.html?body=Citadine')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="24" r="4"/><circle cx="49" cy="24" r="4"/><path d="M7 24v-7l5-3 5-8h18l8 7 8 3 6 5v3"/><path d="M20 6l-5 8h28"/><path d="M34 6v8"/><path d="M11 24h0m8 0h26m8 0h4"/></svg><div class="cat-l">Citadine</div><div class="cat-n" id="cat-Cit"></div></div>
+      <div class="cat" onclick="go('search.html?body=Berline')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="24" r="4"/><circle cx="50" cy="24" r="4"/><path d="M6 24v-6l8-4 7-8h20l9 8 8 3v7"/><path d="M23 6l-6 8h33"/><path d="M39 6v8"/><path d="M10 24h0m8 0h28m8 0h4"/></svg><div class="cat-l">Berline</div><div class="cat-n" id="cat-B"></div></div>
+      <div class="cat" onclick="go('search.html?body=Break')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="24" r="4"/><circle cx="50" cy="24" r="4"/><path d="M6 24v-7l7-3 7-8h29l8 8 3 3v7"/><path d="M22 6l-6 8h41"/><path d="M36 6v8"/><path d="M48 6v8"/><path d="M10 24h0m8 0h28m8 0h6"/></svg><div class="cat-l">Break</div><div class="cat-n" id="cat-Br"></div></div>
+      <div class="cat" onclick="go('search.html?body=Cabriolet')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="24" r="4"/><circle cx="50" cy="24" r="4"/><path d="M6 24v-7l8-3 8-6h7l5 6h14l10 3v7"/><path d="M23 8l6 6"/><path d="M35 14h8"/><path d="M43 10l5 4"/><path d="M10 24h0m8 0h28m8 0h4"/></svg><div class="cat-l">Cabriolet</div><div class="cat-n" id="cat-Cab"></div></div>
+      <div class="cat" onclick="go('search.html?body=Coupe')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="24" r="4"/><circle cx="50" cy="24" r="4"/><path d="M6 24v-7l8-3 10-8h14l12 8 8 3v7"/><path d="M25 6l-8 8h33"/><path d="M38 6l12 8"/><path d="M10 24h0m8 0h28m8 0h4"/></svg><div class="cat-l">Coup&#233;</div><div class="cat-n" id="cat-Cou"></div></div>
+      <div class="cat" onclick="go('search.html?body=SUV')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="25" r="5"/><circle cx="50" cy="25" r="5"/><path d="M6 25v-8l7-4 7-9h24l9 9 7 4v8"/><path d="M22 4l-6 9h37"/><path d="M39 4v9"/><path d="M9 29h48"/></svg><div class="cat-l">SUV</div><div class="cat-n" id="cat-S"></div></div>
+      <div class="cat" onclick="go('search.html?body=Pickup')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="25" r="4.5"/><circle cx="50" cy="25" r="4.5"/><path d="M6 25v-7h16V7h14l8 11h14v7"/><path d="M25 7v11h19"/><path d="M37 7l7 11"/><path d="M10 25h0m8 0h28m8 0h4"/></svg><div class="cat-l">Pick-Up</div><div class="cat-n" id="cat-Pick"></div></div>
+      <div class="cat" onclick="go('search.html?body=Monospace')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="24" r="4"/><circle cx="50" cy="24" r="4"/><path d="M6 24v-7l6-3 8-10h22l11 10 7 3v7"/><path d="M22 4l-7 10h38"/><path d="M34 4v10"/><path d="M45 6v8"/><path d="M10 24h0m8 0h28m8 0h6"/></svg><div class="cat-l">Monospace</div><div class="cat-n" id="cat-Mono"></div></div>
+      <div class="cat" onclick="go('search.html?body=Utilitaire')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="25" r="4"/><circle cx="50" cy="25" r="4"/><path d="M6 25V7h35l10 9h9v9"/><path d="M41 7v18"/><path d="M46 16h5"/><path d="M10 25h0m8 0h28m8 0h6"/></svg><div class="cat-l">Utilitaire</div><div class="cat-n" id="cat-Util"></div></div>
+      <div class="cat" onclick="go('search.html?fuel=Electrique')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="24" r="4"/><circle cx="50" cy="24" r="4"/><path d="M6 24v-6l8-4 7-8h20l9 8 8 3v7"/><path d="M23 6l-6 8h33"/><path d="M39 6v8"/><path d="M10 24h0m8 0h28m8 0h4"/><path d="M30 10l-3 6h5l-3 6" stroke-width="1.6"/></svg><div class="cat-l">&#201;lectrique</div><div class="cat-n" id="cat-E"></div></div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<!-- MODAL FILTRES -->
+<div class="ov" id="ov" onclick="if(event.target===this)closeFilters()">
+  <div class="modal">
+    <div class="mhdr">
+      <div class="mhdr-t">Filtres avancés</div>
+      <button class="mcl" onclick="closeFilters()">×</button>
+    </div>
+    <div class="mbody">
+      <div class="mgrid">
+        <div class="mgrp">
+          <div class="mlbl">Marque</div>
+          <input class="minput" id="fMake" placeholder="ex. BMW" list="dl-makes">
+          <datalist id="dl-makes"><option>BMW<option>Audi<option>Mercedes-Benz<option>Volkswagen<option>Peugeot<option>Renault<option>Citroën<option>Toyota<option>Ford<option>Opel<option>Hyundai<option>Kia<option>Skoda<option>Tesla<option>Dacia<option>Volvo<option>Fiat<option>Nissan<option>Seat</datalist>
+        </div>
+        <div class="mgrp">
+          <div class="mlbl">Modèle</div>
+          <input class="minput" id="fModel" placeholder="ex. Série 3">
+        </div>
+        <div class="mgrp">
+          <div class="mlbl">Prix (€)</div>
+          <div class="mrow">
+            <input class="minput" id="fPMin" type="number" placeholder="Min">
+            <input class="minput" id="fPMax" type="number" placeholder="Max">
+          </div>
+        </div>
+        <div class="mgrp">
+          <div class="mlbl">Kilométrage max</div>
+          <select class="minput" id="fKm">
+            <option value="">Sans limite</option>
+            <option value="30000">30 000 km</option>
+            <option value="50000">50 000 km</option>
+            <option value="80000">80 000 km</option>
+            <option value="120000">120 000 km</option>
+            <option value="200000">200 000 km</option>
+          </select>
+        </div>
+        <div class="mgrp">
+          <div class="mlbl">Première immatriculation</div>
+          <input class="minput" id="fYear" type="number" placeholder="Depuis (ex. 2018)" min="1990" max="2026">
+        </div>
+        <div class="mgrp">
+          <div class="mlbl">Pays</div>
+          <select class="minput" id="fCountry">
+            <option value="">Tous</option>
+            <option value="DE">Allemagne</option>
+            <option value="FR">France</option>
+            <option value="BE">Belgique</option>
+            <option value="NL">Pays-Bas</option>
+            <option value="ES">Espagne</option>
+            <option value="IT">Italie</option>
+            <option value="AT">Autriche</option>
+            <option value="GB">Royaume-Uni</option>
+          </select>
+        </div>
+        <div class="mgrp full">
+          <div class="mlbl">Carburant</div>
+          <div class="tags">
+            <div class="tag" data-k="fuel" data-v="Diesel" onclick="this.classList.toggle('on')">Diesel</div>
+            <div class="tag" data-k="fuel" data-v="Essence" onclick="this.classList.toggle('on')">Essence</div>
+            <div class="tag" data-k="fuel" data-v="Électrique" onclick="this.classList.toggle('on')">Électrique</div>
+            <div class="tag" data-k="fuel" data-v="Hybride" onclick="this.classList.toggle('on')">Hybride</div>
+            <div class="tag" data-k="fuel" data-v="Hybride rechargeable" onclick="this.classList.toggle('on')">Hybride rechargeable</div>
+          </div>
+        </div>
+        <div class="mgrp full">
+          <div class="mlbl">Boîte de vitesses</div>
+          <div class="tags">
+            <div class="tag" data-k="trans" data-v="Manuelle" onclick="this.classList.toggle('on')">Manuelle</div>
+            <div class="tag" data-k="trans" data-v="Automatique" onclick="this.classList.toggle('on')">Automatique</div>
+          </div>
+        </div>
+        <div class="mgrp full">
+          <div class="mlbl">Type de véhicule</div>
+          <div class="tags">
+            <div class="tag" data-k="body" data-v="Berline" onclick="this.classList.toggle('on')">Berline</div>
+            <div class="tag" data-k="body" data-v="SUV" onclick="this.classList.toggle('on')">SUV</div>
+            <div class="tag" data-k="body" data-v="Break" onclick="this.classList.toggle('on')">Break</div>
+            <div class="tag" data-k="body" data-v="Coupé" onclick="this.classList.toggle('on')">Coupé</div>
+            <div class="tag" data-k="body" data-v="Cabriolet" onclick="this.classList.toggle('on')">Cabriolet</div>
+            <div class="tag" data-k="body" data-v="Citadine" onclick="this.classList.toggle('on')">Citadine</div>
+            <div class="tag" data-k="body" data-v="Monospace" onclick="this.classList.toggle('on')">Monospace</div>
+          </div>
+        </div>
+        <div class="mgrp full">
+          <div class="mlbl">Puissance</div>
+          <div class="tags">
+            <div class="tag" data-k="power" data-v="0-90" onclick="this.classList.toggle('on')">Moins de 90 ch</div>
+            <div class="tag" data-k="power" data-v="90-130" onclick="this.classList.toggle('on')">90 – 130 ch</div>
+            <div class="tag" data-k="power" data-v="130-190" onclick="this.classList.toggle('on')">130 – 190 ch</div>
+            <div class="tag" data-k="power" data-v="190-245" onclick="this.classList.toggle('on')">190 – 245 ch</div>
+            <div class="tag" data-k="power" data-v="245+" onclick="this.classList.toggle('on')">Plus de 245 ch</div>
+          </div>
+        </div>
+        <div class="mgrp full">
+          <div class="mlbl">Vendeur</div>
+          <div class="tags">
+            <div class="tag" data-k="seller" data-v="Concessionnaire" onclick="this.classList.toggle('on')">Professionnel</div>
+            <div class="tag" data-k="seller" data-v="Particulier" onclick="this.classList.toggle('on')">Particulier</div>
+          </div>
+        </div>
+        <div class="mgrp full">
+          <div class="mlbl">Autres critères</div>
+          <div class="tags">
+            <div class="tag" data-k="hand" data-v="1ere" onclick="this.classList.toggle('on')">Première main</div>
+            <div class="tag" data-k="hand" data-v="nokm" onclick="this.classList.toggle('on')">Sans accident déclaré</div>
+            <div class="tag" data-k="opts" data-v="pano" onclick="this.classList.toggle('on')">Toit panoramique</div>
+            <div class="tag" data-k="opts" data-v="gps" onclick="this.classList.toggle('on')">Navigation GPS</div>
+            <div class="tag" data-k="opts" data-v="carplay" onclick="this.classList.toggle('on')">CarPlay / Android Auto</div>
+            <div class="tag" data-k="opts" data-v="attelage" onclick="this.classList.toggle('on')">Attelage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mfoot">
+      <button class="btn btn-ghost" onclick="resetFilters()">Réinitialiser</button>
+      <button class="btn btn-primary" onclick="applyFilters()">Afficher les résultats</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-in">
+    <div class="f-top">
+      <div>
+        <div class="f-logo">Auto<b>Europa</b></div>
+        <p class="f-desc">Agrégateur d'annonces automobiles publié par des tiers. AutoEuropa redirige les utilisateurs vers les plateformes d'origine et ne gère ni vente, ni paiement, ni garantie.</p>
+      </div>
+      <div class="f-col">
+        <div class="f-col-t">Marchés</div>
+        <a onclick="go('search.html?country=DE')">Allemagne</a>
+        <a onclick="go('search.html?country=FR')">France</a>
+        <a onclick="go('search.html?country=BE')">Belgique</a>
+        <a onclick="go('search.html?country=NL')">Pays-Bas</a>
+        <a onclick="go('search.html?country=ES')">Espagne</a>
+        <a onclick="go('search.html?country=IT')">Italie</a>
+        <a onclick="go('search.html?country=AT')">Autriche</a>
+      </div>
+      <div class="f-col">
+        <div class="f-col-t">Informations</div>
+        <a>Mentions légales</a>
+        <a>Politique de confidentialité</a>
+        <a>Conditions d'utilisation</a>
+        <a>Gérer les cookies</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <div class="f-leg">
+        <a>Mentions légales</a>
+        <a>Confidentialité</a>
+        <a>CGU</a>
+        <a>Sitemap</a>
+      </div>
+      <div class="f-copy">© 2026 AutoEuropa</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+var API='https://scraper-autoeuropa3-production.up.railway.app'
+var FLAGS={DE:'🇩🇪',FR:'🇫🇷',BE:'🇧🇪',NL:'🇳🇱',ES:'🇪🇸',IT:'🇮🇹',AT:'🇦🇹',PT:'🇵🇹',GB:'🇬🇧'}
+var SRC={AutoScout24:'autoscout24.com',LeBonCoin:'leboncoin.fr','AutoTrader UK':'autotrader.co.uk','Mobile.de':'mobile.de'}
+var vehicles=[], hist=getHist()
+
+;(async function(){
+  try{
+    var r=await fetch(API+'/api/vehicles?limit=500&sortBy=score')
+    if(!r.ok) throw 0
+    var d=await r.json()
+    vehicles=d.vehicles||[]
+    render()
+  }catch(e){
+    setSugTitle()
+    document.getElementById('sugGrid').innerHTML='<p style="color:var(--c-muted);grid-column:1/-1;padding:20px 0;font-size:13px">Impossible de charger les annonces.</p>'
+  }
+})()
+
+function render(){
+  updateCounters()
+  renderSug()
+  renderDeals()
+  renderRecent()
+  renderCats()
+}
+
+/* COMPTEURS */
+function updateCounters(){
+  var c={}
+  vehicles.forEach(function(v){c[v.country]=(c[v.country]||0)+1})
+  var el=document.getElementById('cnt-all')
+  if(el) el.textContent=vehicles.length.toLocaleString('fr-FR')
+  Object.keys(c).forEach(function(k){
+    var el=document.getElementById('cnt-'+k)
+    if(el) el.textContent=c[k].toLocaleString('fr-FR')
+  })
+}
+
+/* SUGGESTIONS */
+function setSugTitle(){
+  var el=document.getElementById('sugTitle')
+  if(!el) return
+  if(hist.length>0){
+    var age=(Date.now()-hist[0].ts)/3600000
+    el.textContent=age<2?'Reprendre votre recherche':age<48?'Basé sur vos recherches':'Susceptibles de vous intéresser'
+  } else {
+    el.textContent='Annonces tendances'
+  }
+}
+
+function renderSug(){
+  setSugTitle()
+  var pool=getSugPool()
+  var cnt=document.getElementById('sugCount')
+  if(cnt) cnt.textContent=pool.length+' annonces'
+  document.getElementById('sugGrid').innerHTML=pool.slice(0,8).map(card).join('')
+}
+
+function getSugPool(){
+  if(!hist.length) return vehicles.filter(function(v){return v.score>=65}).slice(0,8)
+  var mc={},fc={}
+  hist.forEach(function(h){mc[h.make]=(mc[h.make]||0)+1;if(h.fuel)fc[h.fuel]=(fc[h.fuel]||0)+1})
+  var tm=bestKey(mc),tf=bestKey(fc)
+  return vehicles.map(function(v){
+    var s=v.score||50
+    if(v.make===tm) s+=20
+    if(v.fuel===tf) s+=10
+    return{v:v,s:s}
+  }).sort(function(a,b){return b.s-a.s}).map(function(x){return x.v}).slice(0,8)
+}
+
+function bestKey(obj){return Object.keys(obj).sort(function(a,b){return obj[b]-obj[a]})[0]}
+
+/* DEALS */
+function renderDeals(){
+  var deals=vehicles.filter(function(v){return v.score>=75})
+  if(!deals.length){document.getElementById('dealsSec').style.display='none';return}
+  document.getElementById('dealsRow').innerHTML=deals.slice(0,10).map(card).join('')
+}
+
+/* RECENT */
+function renderRecent(){
+  var rec=vehicles.slice().sort(function(a,b){return new Date(b.scrapedAt||0)-new Date(a.scrapedAt||0)}).slice(0,3)
+  document.getElementById('recentGrid').innerHTML=rec.map(card).join('')
+}
+
+/* CATS */
+function renderCats(){
+  // Masquer les compteurs vides au départ
+  document.querySelectorAll('.cat-n').forEach(function(el){
+    if(el.textContent==='—') el.style.display='none'
+  });
+  var fc={},bc={},budget=0,part=0
+  vehicles.forEach(function(v){
+    if(v.fuel) fc[v.fuel]=(fc[v.fuel]||0)+1
+    if(v.price<=15000) budget++
+    if(v.seller==='Particulier') part++
+  })
+  function s(id,n){var el=document.getElementById(id);if(el&&n)el.textContent=n.toLocaleString('fr-FR')+' ann.'}
+  s('cat-E',fc['Électrique'])
+  s('cat-H',fc['Hybride'])
+  s('cat-P',budget)
+  s('cat-Par',part)
+}
+
+/* CARD */
+function card(v,i){
+  var p=fmt(v.price)
+  var flag=FLAGS[v.country]||''
+  var src=SRC[v.source]||v.source||''
+  var hasPic=v.thumbnail&&v.thumbnail.startsWith('http')
+  var scoreColor=v.score>=75?'#16a34a':v.score>=65?'#0052cc':v.score>=50?'#c2410c':'#a1a1aa'
+  var badge=''
+  if(v.score>=75) badge='<div class="vc-badge deal">Bonne affaire</div>'
+  else if(v.score>=65) badge='<div class="vc-badge new">Prix compétitif</div>'
+
+  var saving=''
+  if(v.score>=65&&v.market&&v.market>v.price){
+    var saved=Math.round(v.market-v.price)
+    saving='<div class="vc-price-note">'+fmt(saved)+' en dessous du marché</div>'
+  }
+
+  var img=hasPic
+    ?'<img src="'+esc(v.thumbnail)+'" alt="'+esc(v.make+' '+v.model)+'" loading="lazy">'
+    :'<div class="vc-img-ph">'+ph()+'</div>'
+
+  // Délai de publication naturel
+  var age=''
+  if(v.scrapedAt){
+    var h=Math.round((Date.now()-new Date(v.scrapedAt))/3600000)
+    age=h<2?'Il y a moins d\'1h':h<24?'Il y a '+h+'h':Math.round(h/24)+'j'
+  }
+
+  var loc=(v.city?esc(v.city)+', ':'')+esc(v.country)+(age?' · '+age:'')
+
+  return '<div class="vc" onclick="openV(\''+esc(v.sourceUrl||'#')+'\')">'
+    +'<div class="vc-img">'+img+badge
+    +(flag?'<div class="vc-flag">'+flag+'</div>':'')
+    +(src?'<div class="vc-src">'+src+'</div>':'')
+    +'<div class="vc-fav" onclick="event.stopPropagation();fav(this,'+v.id+')">♡</div>'
+    +'</div>'
+    +'<div class="vc-body">'
+    +'<div class="vc-name">'+esc(v.make+' '+v.model)+'</div>'
+    +'<div class="vc-var">'+(v.variant?esc(v.variant):'')+'</div>'
+    +'<div class="vc-specs">'
+    +(v.year?'<span class="vc-spec">'+v.year+'</span><span class="vc-dot">·</span>':'')
+    +(v.km?'<span class="vc-spec">'+fmtK(v.km)+'</span><span class="vc-dot">·</span>':'')
+    +(v.fuel?'<span class="vc-spec">'+esc(v.fuel)+'</span>':'')
+    +'</div>'
+    +'<div class="vc-price">'+p+'</div>'
+    +saving
+    +'<div class="vc-score"><div class="vc-score-bar"><div class="vc-score-fill" style="width:'+Math.min(100,v.score||50)+'%;background:'+scoreColor+'"></div></div><div class="vc-score-n" style="color:'+scoreColor+'">'+v.score+'</div></div>'
+    +'<div class="vc-foot">'
+    +'<div class="vc-loc">'+loc+'</div>'
+    +'<button class="vc-cta" onclick="event.stopPropagation();openV(\''+esc(v.sourceUrl||'#')+'\')">Voir l\'annonce</button>'
+    +'</div>'
+    +'</div>'
+    +'</div>'
+}
+
+function ph(){
+  return '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d4d4d8" stroke-width="1.2"><path d="M5 17h14"/><path d="M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/><path d="M19 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/><path d="M3 17v-4l2-5h12l3 5h2v4"/><path d="M9 8V5h5l1 3"/></svg>'
+}
+
+/* UTILS */
+function fmt(n){return new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n||0)}
+function fmtK(n){return new Intl.NumberFormat('fr-FR').format(n)+' km'}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+function go(p){window.location.href=p}
+function openV(url){if(url&&url!=='#')window.open(url,'_blank')}
+
+/* RECHERCHE */
+function doSearch(q){
+  if(q&&q.trim()) go('search.html?q='+encodeURIComponent(q.trim()))
+  else openFilters()
+}
+
+/* PAYS */
+function setCountry(el,code){
+  document.querySelectorAll('.country').forEach(function(c){c.classList.remove('on')})
+  el.classList.add('on')
+  go(code?'search.html?country='+code:'search.html')
+}
+
+/* FAVORIS */
+function fav(btn,id){
+  btn.classList.toggle('on')
+  btn.textContent=btn.classList.contains('on')?'♥':'♡'
+  if(btn.classList.contains('on')) showToast('Annonce ajoutée aux favoris')
+}
+
+/* HISTORIQUE */
+function getHist(){try{return JSON.parse(localStorage.getItem('ae-h')||'[]')}catch(e){return[]}}
+
+/* FILTRES */
+function openFilters(){document.getElementById('ov').classList.add('open')}
+function closeFilters(){document.getElementById('ov').classList.remove('open')}
+function resetFilters(){
+  document.querySelectorAll('.tag').forEach(function(t){t.classList.remove('on')})
+  ;['fMake','fModel','fPMin','fPMax','fKm','fYear','fCountry'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=''})
+}
+function applyFilters(){
+  var p=new URLSearchParams()
+  var set=function(id,k){var el=document.getElementById(id);if(el&&el.value)p.set(k,el.value)}
+  set('fMake','make');set('fModel','model');set('fPMin','pmin');set('fPMax','pmax')
+  set('fKm','km');set('fYear','year');set('fCountry','country')
+  document.querySelectorAll('.tag.on').forEach(function(t){
+    var k=t.dataset.k,v=t.dataset.v
+    if(k&&v){var c=p.get(k);p.set(k,c?c+','+v:v)}
+  })
+  go('search.html'+(p.toString()?'?'+p.toString():''))
+}
+
+/* TOAST */
+var _tt
+function showToast(msg){
+  var t=document.getElementById('toast')
+  t.textContent=msg;t.classList.add('show')
+  clearTimeout(_tt);_tt=setTimeout(function(){t.classList.remove('show')},2500)
+}
+</script>
+</body>
+</html>

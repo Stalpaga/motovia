@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="metaTitle">Importer un véhicule en Europe — AutoEuropa</title>
+<meta name="description" id="metaDesc" content="Guide complet pour importer un véhicule d'occasion en Europe. Fiscalité, homologation, immatriculation. Données calculées par pays.">
+<link rel="canonical" id="metaCanon" href="https://autoeuropa.eu/guides">
+<script type="application/ld+json" id="schemaOrg">{}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Sanzo Wada #67 ──────────────────────────────────────────── */
+:root{
+  --paper:#f8f7f4;--white:#fff;--ln:#e2e0da;--ln2:#cccac3;
+  --mu:#8a8780;--bd:#2d2d2d;--ti:#1a1a1a;
+  --ac:#5a82b3;--acd:#3d6494;--acl:#edf2f8;
+  --gn:#2e7d32;--gnl:#e8f5e9;--am:#b45309;--aml:#fff8e1;
+  --rd:#c62828;--rdl:#fce4ec;
+  --max:1200px;--r:5px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--bd);line-height:1.6}
+a{text-decoration:none;color:inherit}
+button,input,select{font-family:inherit;font-size:inherit}
+h1,h2,h3,h4{font-family:'Inter Tight',sans-serif;color:var(--ti)}
+
+/* ── NAV ──────────────────────────────────────────────────────── */
+.nav{position:sticky;top:0;z-index:200;height:50px;background:var(--white);border-bottom:1px solid var(--ln);display:flex;align-items:center}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;gap:6px}
+.logo{font-size:15px;font-weight:600;color:var(--ti);letter-spacing:-.2px;cursor:pointer}
+.logo b{color:var(--ac)}
+.bc-sep{color:var(--ln2);margin:0 4px}
+.bc-item{font-size:12px;color:var(--mu)}
+.bc-item a{color:var(--mu)}
+.bc-item a:hover{color:var(--ac)}
+.nav-r{margin-left:auto;display:flex;align-items:center;gap:6px}
+.nav-a{font-size:13px;color:var(--mu);padding:4px 9px;border-radius:var(--r);transition:color .1s}
+.nav-a:hover{color:var(--ti)}
+.nav-btn{padding:5px 13px;background:var(--ac);color:var(--white);border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer;border:none;transition:background .1s}
+.nav-btn:hover{background:var(--acd)}
+
+/* ── MISE EN PAGE 3 COLONNES ─────────────────────────────────── */
+.outer{max-width:var(--max);margin:0 auto;padding:0 24px}
+.page-grid{display:grid;grid-template-columns:200px 1fr 240px;gap:0;min-height:calc(100vh - 50px)}
+
+/* ── NAV DOCUMENTAIRE FIXE (gauche) ─────────────────────────── */
+.doc-nav{border-right:1px solid var(--ln);padding:28px 0;position:sticky;top:50px;height:calc(100vh - 50px);overflow-y:auto}
+.doc-nav-section{margin-bottom:20px}
+.doc-nav-title{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;padding:0 18px;margin-bottom:6px}
+.doc-nav-item{display:block;padding:5px 18px;font-size:12px;color:var(--bd);cursor:pointer;transition:all .1s;border-left:2px solid transparent;line-height:1.4}
+.doc-nav-item:hover{color:var(--ac);background:var(--acl)}
+.doc-nav-item.active{color:var(--ac);font-weight:500;border-left-color:var(--ac);background:var(--acl)}
+
+/* ── CONTENU PRINCIPAL ───────────────────────────────────────── */
+.main-col{padding:28px 40px;min-width:0}
+
+/* ── SIDEBAR DROITE ──────────────────────────────────────────── */
+.right-col{border-left:1px solid var(--ln);padding:28px 0 28px 24px;position:sticky;top:50px;height:calc(100vh - 50px);overflow-y:auto}
+.sb-block{margin-bottom:16px}
+.sb-hdr{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.sb-item{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--ln);font-size:12px;color:var(--bd);cursor:pointer;transition:color .1s;gap:8px}
+.sb-item:last-child{border-bottom:none}
+.sb-item:hover{color:var(--ac)}
+.sb-item-r{font-size:11px;color:var(--mu);flex-shrink:0;white-space:nowrap}
+.sb-cta{background:var(--ti);border-radius:var(--r);padding:13px;margin-bottom:16px}
+.sb-cta-t{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px}
+.sb-cta-s{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:10px;line-height:1.5}
+.sb-cta-btn{display:block;text-align:center;padding:7px;background:var(--ac);color:var(--white);border-radius:4px;font-size:12px;font-weight:600;border:none;cursor:pointer;width:100%;transition:background .1s}
+.sb-cta-btn:hover{background:var(--acd)}
+.sb-annonces{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.sb-ann-hdr{padding:9px 12px;border-bottom:1px solid var(--ln);font-size:11px;font-weight:600;color:var(--ti);display:flex;justify-content:space-between;align-items:center}
+.sb-ann-item{padding:7px 12px;border-bottom:1px solid var(--ln);display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background .1s;font-size:12px}
+.sb-ann-item:last-child{border-bottom:none}
+.sb-ann-item:hover{background:var(--acl)}
+.sb-ann-count{font-size:11px;font-weight:600;color:var(--ac)}
+.sb-sources{font-size:11px;color:var(--mu);line-height:1.7}
+.sb-sources a{color:var(--ac);display:block}
+.sb-sources a:hover{text-decoration:underline}
+.sb-meta{font-size:11px;color:var(--mu);line-height:1.7;padding-top:12px;border-top:1px solid var(--ln)}
+
+/* ── HERO ────────────────────────────────────────────────────── */
+.hero{padding-bottom:24px;border-bottom:1px solid var(--ln);margin-bottom:28px}
+.hero-selectors{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;max-width:480px}
+.sel-group{display:flex;flex-direction:column;gap:4px}
+.sel-label{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.06em}
+.sel-wrap{display:flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid var(--ln2);border-radius:var(--r);background:var(--white);transition:border-color .1s}
+.sel-wrap:focus-within{border-color:var(--ac)}
+.sel-flag{font-size:16px;flex-shrink:0}
+.sel-wrap select{border:none;background:none;font-size:13px;font-weight:500;color:var(--ti);cursor:pointer;outline:none;flex:1}
+.hero-title{font-size:clamp(18px,2.5vw,26px);font-weight:700;color:var(--ti);letter-spacing:-.4px;line-height:1.25;margin-bottom:6px}
+.hero-sub{font-size:13px;color:var(--mu);line-height:1.65;margin-bottom:18px;max-width:520px}
+
+/* DASHBOARD HERO */
+.hero-dashboard{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;background:var(--white)}
+.hd-item{padding:12px 14px;border-right:1px solid var(--ln)}
+.hd-item:last-child{border-right:none}
+.hd-label{font-size:10px;color:var(--mu);margin-bottom:3px}
+.hd-val{font-size:14px;font-weight:700;color:var(--ti);line-height:1.2}
+.hd-val.accent{color:var(--ac)}
+.hd-sub{font-size:10px;color:var(--mu);margin-top:1px}
+
+/* ── ESTIMATION DYNAMIQUE ────────────────────────────────────── */
+.estimation{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);padding:16px 18px;margin-bottom:24px}
+.est-title{font-size:11px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.est-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--acl);color:var(--ac)}
+.est-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.est-item{padding:10px 12px;background:var(--paper);border-radius:4px;border:1px solid var(--ln)}
+.est-lbl{font-size:10px;color:var(--mu);margin-bottom:3px}
+.est-val{font-size:15px;font-weight:700;color:var(--ti)}
+.est-val.green{color:var(--gn)}
+.est-val.blue{color:var(--ac)}
+.est-note{font-size:10px;color:var(--mu);margin-top:10px;padding-top:8px;border-top:1px solid var(--ln)}
+
+/* ── OUTILS ──────────────────────────────────────────────────── */
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:28px}
+.tool{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);padding:11px 13px;cursor:pointer;transition:border-color .12s,transform .12s;display:flex;align-items:center;gap:10px}
+.tool:hover{border-color:var(--ac);transform:translateY(-1px)}
+.tool-ic{width:26px;height:26px;background:var(--acl);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--ac)}
+.tool-info{}
+.tool-name{font-size:12px;font-weight:600;color:var(--ti);line-height:1.2}
+.tool-sub{font-size:10px;color:var(--mu)}
+
+/* ── SECTION ─────────────────────────────────────────────────── */
+.section{padding:24px 0;border-bottom:1px solid var(--ln)}
+.section:last-child{border-bottom:none;padding-bottom:0}
+.sec-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.sec-title{font-size:13px;font-weight:600;color:var(--ti)}
+.sec-meta{font-size:11px;color:var(--mu)}
+.sec-more{font-size:12px;color:var(--ac);cursor:pointer}
+.sec-more:hover{text-decoration:underline}
+
+/* GUIDE LEAD — variants différents */
+.guide-lead{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);padding:18px 20px;cursor:pointer;margin-bottom:8px;transition:border-color .12s,transform .1s}
+.guide-lead:hover{border-color:var(--ln2);transform:translateY(-1px)}
+.guide-lead.accent{border-left:3px solid var(--ac)}
+.guide-lead.warn{border-left:3px solid var(--am)}
+.gl-top{display:flex;align-items:start;justify-content:space-between;gap:10px;margin-bottom:6px}
+.gl-path{font-size:11px;color:var(--mu)}
+.gl-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;white-space:nowrap;flex-shrink:0}
+.b-hot{background:var(--rdl);color:var(--rd)}
+.b-new{background:var(--gnl);color:var(--gn)}
+.b-upd{background:var(--aml);color:var(--am)}
+.b-reg{background:#e8eaf6;color:#3949ab}
+.gl-title{font-size:15px;font-weight:700;color:var(--ti);line-height:1.3;margin-bottom:5px;letter-spacing:-.1px}
+.gl-desc{font-size:12px;color:var(--mu);line-height:1.65;margin-bottom:12px}
+.gl-footer{display:flex;align-items:center;gap:5px;border-top:1px solid var(--ln);padding-top:10px;flex-wrap:wrap}
+.gl-tag{font-size:11px;color:var(--bd);padding:2px 7px;background:var(--paper);border-radius:3px;border:1px solid var(--ln)}
+.gl-annonces{margin-left:auto;font-size:11px;color:var(--ac);font-weight:500;white-space:nowrap;cursor:pointer}
+.gl-read{font-size:11px;font-weight:500;color:var(--ac)}
+
+/* FORMAT DATA (variante) */
+.guide-data{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);padding:16px 18px;cursor:pointer;margin-bottom:8px;display:grid;grid-template-columns:1fr auto;gap:14px;transition:border-color .12s}
+.guide-data:hover{border-color:var(--ln2)}
+.gd-kpis{display:flex;flex-direction:column;gap:5px;align-items:flex-end;justify-content:space-between}
+.gd-kpi-val{font-size:14px;font-weight:700;color:var(--ti)}
+.gd-kpi-lbl{font-size:10px;color:var(--mu)}
+
+/* LISTE */
+.guides-list{background:var(--ln);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;gap:1px}
+.guide-row{background:var(--white);padding:11px 14px;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;transition:background .1s}
+.guide-row:hover{background:var(--acl)}
+.guide-row.pending{background:var(--paper);cursor:default}
+.gr-title{font-size:12px;font-weight:500;color:var(--ti);line-height:1.4;margin-bottom:2px}
+.gr-sub{font-size:11px;color:var(--mu);line-height:1.4}
+.guide-row.pending .gr-title{color:var(--mu);font-weight:400}
+.gr-right{text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:3px}
+.gr-time{font-size:11px;color:var(--mu)}
+.gr-badge{font-size:10px;font-weight:600;padding:2px 5px;border-radius:3px}
+.gr-badge.new{background:var(--gnl);color:var(--gn)}
+.gr-badge.upd{background:var(--aml);color:var(--am)}
+.gr-badge.hot{background:var(--rdl);color:var(--rd)}
+
+/* ── COMPARATEUR ─────────────────────────────────────────────── */
+.comparateur{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden}
+.comp-hdr{padding:12px 16px;border-bottom:1px solid var(--ln);display:flex;align-items:center;justify-content:space-between}
+.comp-hdr-t{font-size:12px;font-weight:600;color:var(--ti)}
+.comp-selectors{padding:14px 16px;border-bottom:1px solid var(--ln);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.comp-sel{padding:5px 8px;border:1px solid var(--ln2);border-radius:var(--r);font-size:12px;color:var(--ti);background:var(--paper);outline:none;transition:border-color .1s}
+.comp-sel:focus{border-color:var(--ac)}
+.comp-btn{padding:5px 12px;background:var(--ac);color:var(--white);border:none;border-radius:var(--r);font-size:12px;font-weight:600;cursor:pointer;transition:background .1s}
+.comp-btn:hover{background:var(--acd)}
+.comp-table{width:100%;border-collapse:collapse;font-size:12px}
+.comp-table th{background:var(--paper);padding:8px 12px;font-weight:600;color:var(--ti);text-align:left;border-bottom:1px solid var(--ln);border-right:1px solid var(--ln)}
+.comp-table th:last-child{border-right:none}
+.comp-table td{padding:9px 12px;border-bottom:1px solid var(--ln);border-right:1px solid var(--ln);color:var(--bd);vertical-align:top}
+.comp-table td:last-child{border-right:none}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr:hover td{background:var(--paper)}
+.comp-table td:first-child{font-weight:500;color:var(--mu);font-size:11px}
+.pill{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:600}
+.p-ok{background:var(--gnl);color:var(--gn)}
+.p-warn{background:var(--aml);color:var(--am)}
+.p-no{background:var(--rdl);color:var(--rd)}
+.comp-empty{padding:20px 16px;font-size:12px;color:var(--mu);text-align:center}
+
+/* ── CHECKLIST ───────────────────────────────────────────────── */
+.checklist{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden}
+.cl-hdr{padding:10px 14px;border-bottom:1px solid var(--ln);display:flex;align-items:center;justify-content:space-between}
+.cl-hdr-t{font-size:12px;font-weight:600;color:var(--ti)}
+.cl-prog{font-size:11px;color:var(--mu)}
+.cl-item{padding:9px 14px;border-bottom:1px solid var(--ln);display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--bd);line-height:1.5;cursor:pointer;transition:background .1s;user-select:none}
+.cl-item:last-child{border-bottom:none}
+.cl-item:hover{background:var(--paper)}
+.cl-item.done{opacity:.55}
+.cl-box{width:13px;height:13px;border:1.5px solid var(--ln2);border-radius:3px;flex-shrink:0;margin-top:2px;transition:all .1s;display:flex;align-items:center;justify-content:center}
+.cl-item.done .cl-box{background:var(--ac);border-color:var(--ac)}
+.cl-item.done .cl-box::after{content:'';display:block;width:7px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.cl-opt{font-size:10px;color:var(--mu);margin-left:auto;flex-shrink:0;margin-top:2px}
+
+/* ── CALCULATEUR ─────────────────────────────────────────────── */
+.calc{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden}
+.calc-hdr{padding:10px 14px;border-bottom:1px solid var(--ln);font-size:12px;font-weight:600;color:var(--ti);display:flex;align-items:center;justify-content:space-between}
+.calc-sub{font-size:11px;color:var(--mu);font-weight:400}
+.calc-body{padding:12px 14px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.cf label{display:block;font-size:10px;color:var(--mu);margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.cf input,.cf select{width:100%;padding:6px 8px;border:1px solid var(--ln2);border-radius:var(--r);font-size:12px;color:var(--ti);background:var(--paper);outline:none;transition:border-color .1s}
+.cf input:focus,.cf select:focus{border-color:var(--ac)}
+.calc-res{background:var(--acl);border:1px solid #c4d7ee;border-radius:var(--r);padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cr{font-size:10px;color:var(--mu)}
+.cr-v{font-size:14px;font-weight:700;color:var(--ti);margin-top:2px}
+.cr-v.total{color:var(--ac)}
+.calc-note{font-size:10px;color:var(--mu);margin-top:8px;line-height:1.5}
+
+/* ── TABLEAU CT ──────────────────────────────────────────────── */
+.reg-wrap{overflow-x:auto;border:1px solid var(--ln);border-radius:var(--r)}
+.reg-table{width:100%;border-collapse:collapse;font-size:12px}
+.reg-table th{background:var(--paper);padding:7px 10px;font-weight:600;color:var(--ti);text-align:left;border-bottom:1px solid var(--ln);border-right:1px solid var(--ln);white-space:nowrap}
+.reg-table th:last-child{border-right:none}
+.reg-table td{padding:7px 10px;border-bottom:1px solid var(--ln);border-right:1px solid var(--ln);vertical-align:top;color:var(--bd)}
+.reg-table td:last-child{border-right:none}
+.reg-table tr:last-child td{border-bottom:none}
+.reg-table tr:hover td{background:var(--paper)}
+.reg-table td:first-child{font-weight:500;color:var(--ti);white-space:nowrap}
+
+/* ── FAQ ─────────────────────────────────────────────────────── */
+.faq-item{border-bottom:1px solid var(--ln);padding:12px 0}
+.faq-item:first-child{padding-top:0}
+.faq-item:last-child{border-bottom:none;padding-bottom:0}
+.faq-q{font-size:12px;font-weight:500;color:var(--ti);cursor:pointer;display:flex;justify-content:space-between;align-items:start;gap:10px;line-height:1.4;user-select:none}
+.faq-icon{flex-shrink:0;color:var(--mu);font-size:14px;line-height:1;margin-top:1px;transition:transform .15s;font-style:normal}
+.faq-a{font-size:12px;color:var(--mu);line-height:1.7;margin-top:7px;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+
+/* ── MISES À JOUR ────────────────────────────────────────────── */
+.upd-item{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--ln);align-items:start}
+.upd-item:last-child{border-bottom:none}
+.upd-date{font-size:10px;color:var(--mu);padding-top:2px}
+.upd-title{font-size:12px;font-weight:500;color:var(--ti);line-height:1.4;margin-bottom:2px}
+.upd-sub{font-size:11px;color:var(--mu)}
+
+/* ── MATRICE ─────────────────────────────────────────────────── */
+.matrix-desktop{overflow-x:auto;border:1px solid var(--ln);border-radius:var(--r)}
+.matrix{border-collapse:collapse;width:100%;min-width:460px}
+.matrix th{background:var(--paper);padding:7px 9px;font-size:10px;font-weight:600;color:var(--ti);border-bottom:1px solid var(--ln);border-right:1px solid var(--ln);text-align:center;white-space:nowrap}
+.matrix th:first-child{text-align:left}
+.matrix td{border-right:1px solid var(--ln);border-bottom:1px solid var(--ln);padding:0}
+.matrix td:last-child{border-right:none}
+.matrix tr:last-child td{border-bottom:none}
+.matrix td.rh{background:var(--paper);padding:7px 9px;font-size:11px;font-weight:500;color:var(--bd);white-space:nowrap}
+.matrix td.rh.me{background:var(--acl);color:var(--ac);font-weight:600}
+.mc{display:block;padding:7px 5px;font-size:11px;text-align:center;color:var(--ln2);cursor:default}
+.mc.ok{color:var(--ac);font-weight:600;cursor:pointer;transition:background .1s}
+.mc.ok:hover{background:var(--acl)}
+.mc.self{background:var(--paper);color:var(--ln2)}
+.matrix-mobile{display:none}
+.matrix-sel{width:100%;padding:7px 9px;border:1px solid var(--ln2);border-radius:var(--r);font-size:12px;color:var(--ti);background:var(--white);outline:none}
+.matrix-sel:focus{border-color:var(--ac)}
+.matrix-result{margin-top:10px;padding:11px 13px;background:var(--white);border:1px solid var(--ln);border-radius:var(--r);font-size:12px;color:var(--mu)}
+.matrix-result.found{color:var(--ac);font-weight:500;cursor:pointer}
+
+/* ── SIGNATURE ÉDITORIALE ────────────────────────────────────── */
+.editorial{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);padding:13px 16px;font-size:11px;color:var(--mu);line-height:1.8}
+.editorial strong{color:var(--bd);font-weight:500}
+
+/* ── FOOTER ──────────────────────────────────────────────────── */
+footer{background:var(--white);border-top:1px solid var(--ln);padding:20px 0;margin-top:0}
+.f-in{max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.f-logo{font-size:14px;font-weight:600;color:var(--ti)}
+.f-logo b{color:var(--ac)}
+.f-links{display:flex;gap:14px;flex-wrap:wrap}
+.f-links a{font-size:12px;color:var(--mu);cursor:pointer;transition:color .1s}
+.f-links a:hover{color:var(--bd)}
+.f-copy{font-size:11px;color:var(--mu)}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media(max-width:960px){
+  .page-grid{grid-template-columns:1fr}
+  .doc-nav,.right-col{display:none}
+  .main-col{padding:20px 0}
+}
+@media(max-width:640px){
+  .outer{padding:0 14px}
+  .hero-dashboard{grid-template-columns:repeat(3,1fr);overflow-x:auto}
+  .est-grid{grid-template-columns:1fr 1fr}
+  .tools-row{grid-template-columns:1fr 1fr}
+  .calc-grid{grid-template-columns:1fr}
+  .matrix-desktop{display:none}
+  .matrix-mobile{display:block}
+  .comp-selectors{flex-direction:column}
+}
+
+/* ── DARK MODE ───────────────────────────────────────────────── */
+@media(prefers-color-scheme:dark){
+  :root{
+    --paper:#1a1a1a;--white:#232323;--ln:#303030;--ln2:#404040;
+    --mu:#888;--bd:#d0d0d0;--ti:#f0f0f0;
+    --ac:#7aa8d4;--acd:#5a82b3;--acl:#1b2b3a;
+    --gnl:#1a2e1a;--aml:#2e2200;--rdl:#2e1515;
+  }
+  .nav,footer{background:#1e1e1e;border-color:#2e2e2e}
+  .doc-nav{border-color:#2e2e2e}
+  .right-col{border-color:#2e2e2e}
+  .guide-lead,.guide-data,.guide-row,.calc,.checklist,.sb-annonces,
+  .comparateur,.tools-row .tool,.estimation,.hero-dashboard,.editorial{background:#232323}
+  .calc-res{background:#1b2b3a;border-color:#2a4060}
+  .reg-table th,.comp-table th,.matrix th{background:#2a2a2a}
+  .reg-table tr:hover td,.comp-table tr:hover td,.matrix .mc.ok:hover{background:#2a2a2a}
+  .cf input,.cf select,.comp-sel,.matrix-sel,.sel-wrap{background:#2a2a2a;border-color:#3a3a3a;color:#f0f0f0}
+  .sel-wrap{background:#2a2a2a}
+  .matrix td.rh,.mc.self,.est-item{background:#2a2a2a}
+  .matrix-result{background:#232323;border-color:#303030}
+  .gl-tag{background:#2a2a2a;border-color:#404040;color:#aaa}
+  .gr-badge.new{background:#1a2e1a}
+  .gr-badge.upd{background:#2e2200}
+  .gr-badge.hot{background:#2e1515}
+}
+
+/* ── ASSISTANT D'IMPORT ──────────────────────────────────────── */
+.assistant-trigger{background:var(--ti);border-radius:var(--r);padding:16px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;transition:opacity .1s}
+.assistant-trigger:hover{opacity:.92}
+.at-left{}
+.at-badge{font-size:10px;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.at-title{font-size:15px;font-weight:700;color:var(--white);line-height:1.3}
+.at-sub{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px}
+.at-arrow{width:36px;height:36px;background:var(--ac);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s}
+.assistant-trigger:hover .at-arrow{transform:scale(1.08)}
+
+.assistant-modal{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.6);overflow-y:auto;padding:20px}
+.assistant-modal.open{display:flex;align-items:flex-start;justify-content:center}
+.assistant-panel{background:var(--white);border-radius:8px;width:100%;max-width:560px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);margin:auto}
+.ap-hdr{background:var(--ti);padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.ap-hdr-t{font-size:14px;font-weight:700;color:var(--white)}
+.ap-close{width:28px;height:28px;background:rgba(255,255,255,.15);border:none;border-radius:50%;color:var(--white);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.ap-progress{height:3px;background:rgba(255,255,255,.2)}
+.ap-progress-bar{height:100%;background:var(--ac);transition:width .3s}
+.ap-body{padding:24px}
+.ap-step-num{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.ap-question{font-size:16px;font-weight:700;color:var(--ti);margin-bottom:4px;line-height:1.3}
+.ap-hint{font-size:12px;color:var(--mu);margin-bottom:18px;line-height:1.5}
+.ap-options{display:flex;flex-direction:column;gap:8px}
+.ap-option{padding:11px 14px;border:1px solid var(--ln2);border-radius:var(--r);cursor:pointer;transition:all .12s;font-size:13px;color:var(--bd);text-align:left;background:var(--white);display:flex;align-items:center;gap:10px}
+.ap-option:hover{border-color:var(--ac);background:var(--acl);color:var(--ac)}
+.ap-option.selected{border-color:var(--ac);background:var(--acl);color:var(--ac);font-weight:500}
+.ap-option-icon{font-size:16px;flex-shrink:0}
+.ap-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-top:1px solid var(--ln)}
+.ap-back{padding:7px 14px;border:1px solid var(--ln2);background:none;border-radius:var(--r);font-size:12px;color:var(--mu);cursor:pointer;transition:all .1s}
+.ap-back:hover{border-color:var(--bd);color:var(--bd)}
+.ap-next{padding:7px 16px;background:var(--ac);color:var(--white);border:none;border-radius:var(--r);font-size:13px;font-weight:600;cursor:pointer;transition:background .1s}
+.ap-next:hover{background:var(--acd)}
+.ap-next:disabled{opacity:.4;cursor:default}
+
+/* Résultat assistant */
+.ap-result{padding:20px}
+.apr-title{font-size:14px;font-weight:700;color:var(--ti);margin-bottom:4px}
+.apr-sub{font-size:12px;color:var(--mu);margin-bottom:16px}
+.apr-index{background:var(--acl);border:1px solid #c4d7ee;border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.apr-score-wrap{flex-shrink:0}
+.apr-score{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;border:3px solid var(--ac)}
+.apr-score-n{font-size:16px;font-weight:700;color:var(--ac)}
+.apr-score-l{font-size:8px;color:var(--mu)}
+.apr-index-info{}
+.apr-index-title{font-size:12px;font-weight:600;color:var(--ti);margin-bottom:2px}
+.apr-index-sub{font-size:11px;color:var(--mu)}
+.apr-steps{display:flex;flex-direction:column;gap:0}
+.apr-step{display:grid;grid-template-columns:24px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--ln);align-items:start}
+.apr-step:last-child{border-bottom:none}
+.apr-step-n{width:20px;height:20px;background:var(--ac);color:var(--white);border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.apr-step-content{}
+.apr-step-title{font-size:12px;font-weight:600;color:var(--ti);margin-bottom:2px}
+.apr-step-desc{font-size:11px;color:var(--mu);line-height:1.5}
+.apr-step-meta{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap}
+.apr-step-tag{font-size:10px;padding:1px 7px;border-radius:3px;background:var(--paper);border:1px solid var(--ln);color:var(--bd)}
+.apr-actions{display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--ln)}
+.apr-btn{flex:1;padding:8px;text-align:center;border-radius:var(--r);font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--ln2);background:var(--white);color:var(--bd);transition:all .1s}
+.apr-btn:hover{border-color:var(--ac);color:var(--ac)}
+.apr-btn.primary{background:var(--ac);color:var(--white);border-color:var(--ac)}
+.apr-btn.primary:hover{background:var(--acd)}
+
+/* ── OBSERVATOIRE ────────────────────────────────────────────── */
+.obs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.obs-card{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);padding:14px 16px}
+.obs-card-title{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.obs-card-meta{font-size:10px;color:var(--mu);font-weight:400;text-transform:none;letter-spacing:0}
+.obs-item{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--ln);font-size:12px;cursor:pointer;gap:8px;transition:color .1s}
+.obs-item:last-child{border-bottom:none;padding-bottom:0}
+.obs-item:hover{color:var(--ac)}
+.obs-item-name{color:var(--bd);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.obs-item-val{font-size:11px;font-weight:600;color:var(--ti);flex-shrink:0;white-space:nowrap}
+.obs-item-val.green{color:var(--gn)}
+.obs-item-val.red{color:var(--rd)}
+.obs-rank{font-size:10px;color:var(--mu);width:16px;flex-shrink:0}
+
+/* ── MARCHÉ ACTUEL ───────────────────────────────────────────── */
+.marche-band{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);padding:14px 16px;margin-bottom:10px}
+.marche-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.marche-title{font-size:12px;font-weight:600;color:var(--ti)}
+.marche-updated{font-size:10px;color:var(--mu)}
+.marche-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ms-item{padding:8px;background:var(--paper);border-radius:4px}
+.ms-label{font-size:10px;color:var(--mu);margin-bottom:2px}
+.ms-val{font-size:14px;font-weight:700;color:var(--ti)}
+.ms-val.green{color:var(--gn)}
+.ms-val.blue{color:var(--ac)}
+
+/* ── TIMELINE ────────────────────────────────────────────────── */
+.timeline{padding:4px 0}
+.tl-item{display:grid;grid-template-columns:32px 1fr;gap:0;position:relative}
+.tl-item:not(:last-child) .tl-line{position:absolute;left:15px;top:28px;bottom:-4px;width:2px;background:var(--ln);z-index:0}
+.tl-dot{width:32px;display:flex;flex-direction:column;align-items:center;padding-top:4px;position:relative;z-index:1}
+.tl-circle{width:20px;height:20px;border-radius:50%;background:var(--white);border:2px solid var(--ln2);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--mu);flex-shrink:0;transition:all .15s}
+.tl-item.done .tl-circle{background:var(--ac);border-color:var(--ac);color:var(--white)}
+.tl-item.active .tl-circle{background:var(--white);border-color:var(--ac);color:var(--ac);box-shadow:0 0 0 3px rgba(90,130,179,.2)}
+.tl-content{padding:4px 0 20px 14px}
+.tl-title{font-size:12px;font-weight:600;color:var(--ti);margin-bottom:2px;cursor:pointer;transition:color .1s}
+.tl-item.done .tl-title{color:var(--mu)}
+.tl-item.active .tl-title{color:var(--ac)}
+.tl-desc{font-size:11px;color:var(--mu);line-height:1.5}
+.tl-meta{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap}
+.tl-tag{font-size:10px;padding:1px 6px;border-radius:3px;background:var(--paper);border:1px solid var(--ln)}
+.tl-item.active .tl-tag{background:var(--acl);border-color:#c4d7ee;color:var(--ac)}
+
+/* ── INDICE AUTOEUROPA ───────────────────────────────────────── */
+.indice-card{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);padding:14px 16px;display:flex;gap:16px;align-items:start}
+.indice-score{flex-shrink:0;text-align:center}
+.indice-circle{width:64px;height:64px;border-radius:50%;border:4px solid var(--ac);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.indice-n{font-size:22px;font-weight:700;color:var(--ac);line-height:1}
+.indice-l{font-size:9px;color:var(--mu);margin-top:1px}
+.indice-label{font-size:11px;font-weight:600;color:var(--ac);margin-top:6px}
+.indice-detail{}
+.indice-title{font-size:13px;font-weight:600;color:var(--ti);margin-bottom:8px}
+.indice-bars{display:flex;flex-direction:column;gap:5px}
+.ib-item{display:grid;grid-template-columns:80px 1fr 28px;gap:6px;align-items:center;font-size:11px}
+.ib-label{color:var(--mu);white-space:nowrap}
+.ib-bar{height:4px;background:var(--ln);border-radius:99px;overflow:hidden}
+.ib-fill{height:100%;border-radius:99px;background:var(--ac);transition:width .6s ease}
+.ib-val{color:var(--ti);font-weight:600;text-align:right}
+
+/* ── ANNONCES LIÉES ──────────────────────────────────────────── */
+.linked-annonces{background:var(--white);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden}
+.la-hdr{padding:10px 14px;border-bottom:1px solid var(--ln);display:flex;align-items:center;justify-content:space-between}
+.la-hdr-t{font-size:12px;font-weight:600;color:var(--ti)}
+.la-item{padding:9px 14px;border-bottom:1px solid var(--ln);display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:background .1s;gap:10px}
+.la-item:last-child{border-bottom:none}
+.la-item:hover{background:var(--acl)}
+.la-name{font-size:12px;color:var(--bd)}
+.la-count{font-size:11px;font-weight:600;color:var(--ac)}
+.la-footer{padding:9px 14px;border-top:1px solid var(--ln);text-align:center}
+.la-see-all{font-size:12px;color:var(--ac);cursor:pointer;font-weight:500}
+.la-see-all:hover{text-decoration:underline}
+
+/* Dark mode additions */
+@media(prefers-color-scheme:dark){
+  .assistant-panel,.ap-option,.marche-band,.obs-card,.linked-annonces,
+  .indice-card,.timeline .tl-circle{background:#232323}
+  .ap-option:hover,.ap-option.selected{background:#1b2b3a}
+  .ms-item,.est-item,.tl-tag{background:#2a2a2a;border-color:#3a3a3a}
+  .tl-line{background:#303030}
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Navigation principale">
+  <div class="nav-in">
+    <a class="logo" href="index.html">Auto<b>Europa</b></a>
+    <span class="bc-sep" aria-hidden="true">›</span>
+    <span class="bc-item"><a href="guides.html">Guides</a></span>
+    <span class="bc-sep" aria-hidden="true">›</span>
+    <span class="bc-item" id="bcCurr">Importation</span>
+    <div class="nav-r">
+      <a class="nav-a" href="search.html">Annonces</a>
+      <button class="nav-btn" onclick="location.href='search.html'">Voir les annonces</button>
+    </div>
+  </div>
+</nav>
+
+<div class="outer">
+<div class="page-grid">
+
+  <!-- ── NAV DOCUMENTAIRE FIXE ── -->
+  <nav class="doc-nav" aria-label="Navigation documentaire">
+    <div class="doc-nav-section">
+      <div class="doc-nav-title">Ce guide</div>
+      <a class="doc-nav-item active" href="#presentation" onclick="scrollTo('presentation',this)">Présentation</a>
+      <a class="doc-nav-item" href="#estimation" onclick="scrollTo('estimation',this)">Estimation</a>
+      <a class="doc-nav-item" href="#marche" onclick="scrollTo('marche',this)">Marché actuel</a>
+      <a class="doc-nav-item" href="#outils" onclick="scrollTo('outils',this)">Outils</a>
+      <a class="doc-nav-item" href="#documents" onclick="scrollTo('documents',this)">Documents</a>
+      <a class="doc-nav-item" href="#fiscalite" onclick="scrollTo('fiscalite',this)">Fiscalité</a>
+      <a class="doc-nav-item" href="#homologation" onclick="scrollTo('homologation',this)">Homologation</a>
+      <a class="doc-nav-item" href="#immatriculation" onclick="scrollTo('immatriculation',this)">Immatriculation</a>
+      <a class="doc-nav-item" href="#comparateur" onclick="scrollTo('comparateur',this)">Comparateur</a>
+      <a class="doc-nav-item" href="#timeline" onclick="scrollTo('timeline',this)">Parcours</a>
+      <a class="doc-nav-item" href="#observatoire" onclick="scrollTo('observatoire',this)">Observatoire</a>
+      <a class="doc-nav-item" href="#faq" onclick="scrollTo('faq',this)">FAQ</a>
+      <a class="doc-nav-item" href="#mises-a-jour" onclick="scrollTo('mises-a-jour',this)">Mises à jour</a>
+    </div>
+    <div class="doc-nav-section">
+      <div class="doc-nav-title">Autres guides</div>
+      <a class="doc-nav-item" href="#" onclick="setAchat('BE')">Depuis la Belgique</a>
+      <a class="doc-nav-item" href="#" onclick="setAchat('NL')">Depuis les Pays-Bas</a>
+      <a class="doc-nav-item" href="#" onclick="setAchat('ES')">Depuis l'Espagne</a>
+      <a class="doc-nav-item" href="#" onclick="setAchat('IT')">Depuis l'Italie</a>
+      <a class="doc-nav-item" href="#" onclick="setAchat('GB')">Depuis le Royaume-Uni</a>
+    </div>
+    <div class="doc-nav-section">
+      <div class="doc-nav-title">Outils</div>
+      <a class="doc-nav-item" href="#" onclick="scrollTo('outils',null)">Calculateur import</a>
+      <a class="doc-nav-item" href="#" onclick="scrollTo('documents',null)">Checklist</a>
+    </div>
+  </nav>
+
+  <!-- ── CONTENU PRINCIPAL ── -->
+  <main class="main-col" id="mainCol">
+
+
+    <!-- ASSISTANT D'IMPORT -->
+    <div class="assistant-trigger" onclick="openAssistant()" role="button" tabindex="0" aria-haspopup="dialog" onkeydown="if(event.key==='Enter'||event.key===' ')openAssistant()">
+      <div class="at-left">
+        <div class="at-badge">Nouveau — Outil signature</div>
+        <div class="at-title">Assistant d'importation personnalisé</div>
+        <div class="at-sub">5 questions · Parcours généré en quelques secondes · Documents, délais et coûts</div>
+      </div>
+      <div class="at-arrow" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </div>
+    </div>
+
+    <!-- MODAL ASSISTANT -->
+    <div class="assistant-modal" id="assistantModal" role="dialog" aria-modal="true" aria-label="Assistant d'importation" onclick="if(event.target===this)closeAssistant()">
+      <div class="assistant-panel">
+        <div class="ap-hdr">
+          <span class="ap-hdr-t">Assistant d'importation</span>
+          <button class="ap-close" onclick="closeAssistant()" aria-label="Fermer">×</button>
+        </div>
+        <div class="ap-progress"><div class="ap-progress-bar" id="apBar" style="width:20%"></div></div>
+        <div class="ap-body" id="apBody"></div>
+        <div class="ap-nav" id="apNav"></div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero" id="presentation">
+      <div class="hero-selectors">
+        <div class="sel-group">
+          <div class="sel-label">Pays de résidence</div>
+          <div class="sel-wrap">
+            <span class="sel-flag" id="flagDest">🇫🇷</span>
+            <select id="selDest" onchange="update()" aria-label="Pays de destination">
+              <option value="FR">France</option>
+              <option value="BE">Belgique</option>
+              <option value="DE">Allemagne</option>
+              <option value="NL">Pays-Bas</option>
+              <option value="ES">Espagne</option>
+              <option value="IT">Italie</option>
+              <option value="AT">Autriche</option>
+              <option value="PL">Pologne</option>
+            </select>
+          </div>
+        </div>
+        <div class="sel-group">
+          <div class="sel-label">Pays d'achat</div>
+          <div class="sel-wrap">
+            <span class="sel-flag" id="flagAchat">🇩🇪</span>
+            <select id="selAchat" onchange="update()" aria-label="Pays d'achat">
+              <option value="DE">Allemagne</option>
+              <option value="FR">France</option>
+              <option value="BE">Belgique</option>
+              <option value="NL">Pays-Bas</option>
+              <option value="ES">Espagne</option>
+              <option value="IT">Italie</option>
+              <option value="GB">Royaume-Uni</option>
+              <option value="AT">Autriche</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="hero-title" id="heroTitle">Importer un véhicule depuis l'Allemagne vers la France</h1>
+      <p class="hero-sub" id="heroSub">Procédures officielles, fiscalité, homologation et immatriculation. Toutes les informations adaptées à votre combinaison de pays.</p>
+
+      <!-- Dashboard hero — données réelles uniquement -->
+      <div class="hero-dashboard" role="list">
+        <div class="hd-item" role="listitem">
+          <div class="hd-label">Dernière vérification</div>
+          <div class="hd-val">5 août 2026</div>
+        </div>
+        <div class="hd-item" role="listitem">
+          <div class="hd-label">Temps de lecture</div>
+          <div class="hd-val" id="hdTime">9 min</div>
+        </div>
+        <div class="hd-item" role="listitem">
+          <div class="hd-label">Complexité</div>
+          <div class="hd-val" id="hdComplexite">Moyenne</div>
+        </div>
+        <div class="hd-item" role="listitem">
+          <div class="hd-label">Annonces dispo.</div>
+          <div class="hd-val accent" id="hdAnnonces">—</div>
+        </div>
+        <div class="hd-item" role="listitem">
+          <div class="hd-label">Sources officielles</div>
+          <div class="hd-val" id="hdSources">12</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ESTIMATION DYNAMIQUE -->
+    <div class="section" id="estimation">
+      <div class="estimation">
+        <div class="est-title">
+          Estimation AutoEuropa
+          <span class="est-badge" id="estBadge">Calculé pour DE → FR</span>
+        </div>
+        <div class="est-grid">
+          <div class="est-item">
+            <div class="est-lbl">Délai moyen</div>
+            <div class="est-val blue" id="estDelai">12 jours</div>
+          </div>
+          <div class="est-item">
+            <div class="est-lbl">Coût administratif</div>
+            <div class="est-val" id="estCout">480 €</div>
+          </div>
+          <div class="est-item">
+            <div class="est-lbl">Économie moyenne</div>
+            <div class="est-val green" id="estEco">−2 850 €</div>
+          </div>
+          <div class="est-item">
+            <div class="est-lbl">Documents requis</div>
+            <div class="est-val" id="estDocs">7</div>
+          </div>
+        </div>
+        <div class="est-note">Estimations basées sur les démarches standard. Le coût administratif inclut la carte grise (barème IDF), les frais de dossier et le transport moyen. L'économie est calculée par rapport au prix moyen du même véhicule dans votre pays de résidence.</div>
+      </div>
+    </div>
+
+
+    <!-- MARCHÉ ACTUEL + INDICE + ANNONCES LIÉES -->
+    <div class="section" id="marche">
+      <div class="sec-hdr">
+        <span class="sec-title">Marché actuel</span>
+        <span class="sec-meta" id="marcheUpdated">Données en temps réel</span>
+      </div>
+
+      <!-- Indice AutoEuropa -->
+      <div class="indice-card" style="margin-bottom:10px">
+        <div class="indice-score">
+          <div class="indice-circle"><span class="indice-n" id="indiceN">72</span><span class="indice-l">/100</span></div>
+          <div class="indice-label" id="indiceLabel">Bon</div>
+        </div>
+        <div class="indice-detail">
+          <div class="indice-title">Indice AutoEuropa — <span id="indiceRoute">DE → FR</span></div>
+          <div class="indice-bars">
+            <div class="ib-item"><span class="ib-label">Disponibilité</span><div class="ib-bar"><div class="ib-fill" id="ibar-dispo" style="width:85%"></div></div><span class="ib-val" id="iv-dispo">85</span></div>
+            <div class="ib-item"><span class="ib-label">Prix</span><div class="ib-bar"><div class="ib-fill" id="ibar-prix" style="width:78%"></div></div><span class="ib-val" id="iv-prix">78</span></div>
+            <div class="ib-item"><span class="ib-label">Simplicité</span><div class="ib-bar"><div class="ib-fill" id="ibar-simple" style="width:65%"></div></div><span class="ib-val" id="iv-simple">65</span></div>
+            <div class="ib-item"><span class="ib-label">Économie</span><div class="ib-bar"><div class="ib-fill" id="ibar-eco" style="width:80%"></div></div><span class="ib-val" id="iv-eco">80</span></div>
+            <div class="ib-item"><span class="ib-label">Fiabilité docs</span><div class="ib-bar"><div class="ib-fill" id="ibar-docs" style="width:90%"></div></div><span class="ib-val" id="iv-docs">90</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats marché -->
+      <div class="marche-band" id="marcheBand">
+        <div class="marche-hdr">
+          <span class="marche-title" id="marcheTitle">Données de marché — Allemagne</span>
+          <span class="marche-updated" id="marcheMaj">Mis à jour aujourd'hui</span>
+        </div>
+        <div class="marche-stats">
+          <div class="ms-item"><div class="ms-label">Prix moyen pays d'achat</div><div class="ms-val blue" id="msPrixAchat">—</div></div>
+          <div class="ms-item"><div class="ms-label">Annonces disponibles</div><div class="ms-val" id="msAnnonces">—</div></div>
+          <div class="ms-item"><div class="ms-label">Économie estimée</div><div class="ms-val green" id="msEco" id="msEco">—</div></div>
+          <div class="ms-item"><div class="ms-label">Score moyen qualité</div><div class="ms-val" id="msScore">—</div></div>
+        </div>
+      </div>
+
+      <!-- Annonces liées -->
+      <div class="linked-annonces">
+        <div class="la-hdr">
+          <span class="la-hdr-t">Véhicules actuellement disponibles</span>
+          <span style="font-size:11px;color:var(--mu)" id="laCountry">en Allemagne</span>
+        </div>
+        <div class="la-item" onclick="location.href='search.html?make=Volkswagen&model=Golf'" id="la-golf">
+          <span class="la-name">Volkswagen Golf</span><span class="la-count">—</span>
+        </div>
+        <div class="la-item" onclick="location.href='search.html?make=BMW'" id="la-bmw">
+          <span class="la-name">BMW Série 3</span><span class="la-count">—</span>
+        </div>
+        <div class="la-item" onclick="location.href='search.html?make=Audi&model=A4'" id="la-audi">
+          <span class="la-name">Audi A4</span><span class="la-count">—</span>
+        </div>
+        <div class="la-item" onclick="location.href='search.html?make=Mercedes-Benz'" id="la-merc">
+          <span class="la-name">Mercedes Classe C</span><span class="la-count">—</span>
+        </div>
+        <div class="la-item" onclick="location.href='search.html?make=Toyota&model=Yaris'" id="la-toyota">
+          <span class="la-name">Toyota Yaris</span><span class="la-count">—</span>
+        </div>
+        <div class="la-footer">
+          <span class="la-see-all" id="laSeeAll" onclick="location.href='search.html'">Voir toutes les annonces →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTILS -->
+    <div class="section" id="outils">
+      <div class="sec-hdr"><span class="sec-title">Outils disponibles</span></div>
+      <div class="tools-row">
+        <div class="tool" onclick="document.getElementById('calcSection').scrollIntoView({behavior:'smooth'})" role="button" tabindex="0">
+          <div class="tool-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg></div>
+          <div class="tool-info"><div class="tool-name">Coût d'importation</div><div class="tool-sub">Carte grise, malus, transport</div></div>
+        </div>
+        <div class="tool" onclick="document.getElementById('documents').scrollIntoView({behavior:'smooth'})" role="button" tabindex="0">
+          <div class="tool-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div class="tool-info"><div class="tool-name">Checklist documents</div><div class="tool-sub" id="toolCheckSub">Pour un achat en Allemagne</div></div>
+        </div>
+        <div class="tool" onclick="document.getElementById('comparateur').scrollIntoView({behavior:'smooth'})" role="button" tabindex="0">
+          <div class="tool-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="tool-info"><div class="tool-name">Comparateur de pays</div><div class="tool-sub">Coûts, délais, TVA</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GUIDES PAR PAYS — variés intentionnellement -->
+    <div class="section">
+      <div class="sec-hdr">
+        <span class="sec-title" id="guidesTitle">Guides depuis l'Allemagne</span>
+      </div>
+
+      <div class="guide-lead accent" onclick="location.href='#'" id="guide1">
+        <div class="gl-top">
+          <span class="gl-path" id="g1path">DE → FR</span>
+          <span class="gl-badge b-hot">Très consulté</span>
+        </div>
+        <h2 class="gl-title" id="g1title">Acheter en Allemagne et l'immatriculer en France</h2>
+        <p class="gl-desc" id="g1desc">De la recherche sur AutoScout24.de ou Mobile.de à la carte grise française : quitus fiscal ANTS, TÜV reconnu, Fahrzeugbrief. Guide complet avec checklist et calculateur intégré.</p>
+        <div class="gl-footer">
+          <span class="gl-tag">Quitus fiscal</span>
+          <span class="gl-tag">TÜV</span>
+          <span class="gl-tag">Fahrzeugbrief</span>
+          <span class="gl-annonces" id="g1ann" onclick="event.stopPropagation();location.href='search.html?country=DE'"></span>
+          <span class="gl-read">11 min →</span>
+        </div>
+      </div>
+
+      <div class="guide-data" onclick="location.href='#'" id="guide2">
+        <div>
+          <div class="gl-top" style="margin-bottom:5px">
+            <span class="gl-path" id="g2path">BE → FR</span>
+            <span class="gl-badge b-upd">Mis à jour juin 2026</span>
+          </div>
+          <h2 class="gl-title" style="font-size:13px;margin-bottom:4px" id="g2title">Belgique : exonération TVA et procédure DIV</h2>
+          <p style="font-size:11px;color:var(--mu);line-height:1.6" id="g2desc">Véhicules de plus de 6 mois et 6 000 km exonérés dans la plupart des cas. Source : directive 2006/112/CE — vérifiée avec la DGFIP.</p>
+        </div>
+        <div class="gd-kpis">
+          <div><div class="gd-kpi-val">21%</div><div class="gd-kpi-lbl">TVA BE</div></div>
+          <div><div class="gd-kpi-val" id="g2ann">—</div><div class="gd-kpi-lbl">annonces BE</div></div>
+          <span style="font-size:11px;color:var(--ac)">7 min →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATRICE -->
+    <div class="section">
+      <div class="sec-hdr">
+        <span class="sec-title">Toutes les combinaisons</span>
+        <span class="sec-meta" id="matrixCount"></span>
+      </div>
+      <div class="matrix-desktop">
+        <table class="matrix" aria-label="Matrice des guides par pays">
+          <thead>
+            <tr>
+              <th>Achat ↓ / Dest →</th>
+              <th>FR</th><th>BE</th><th>DE</th><th>NL</th><th>ES</th><th>IT</th>
+            </tr>
+          </thead>
+          <tbody id="matrixBody"></tbody>
+        </table>
+      </div>
+      <div class="matrix-mobile">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+          <div>
+            <label style="font-size:10px;color:var(--mu);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;font-weight:600">Pays d'achat</label>
+            <select class="matrix-sel" id="mAchat" onchange="updateMobile()">
+              <option value="DE">Allemagne</option><option value="FR">France</option>
+              <option value="BE">Belgique</option><option value="NL">Pays-Bas</option>
+              <option value="ES">Espagne</option><option value="IT">Italie</option><option value="GB">Royaume-Uni</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:10px;color:var(--mu);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;font-weight:600">Destination</label>
+            <select class="matrix-sel" id="mDest" onchange="updateMobile()">
+              <option value="FR">France</option><option value="BE">Belgique</option>
+              <option value="DE">Allemagne</option><option value="NL">Pays-Bas</option>
+              <option value="ES">Espagne</option><option value="IT">Italie</option><option value="AT">Autriche</option>
+            </select>
+          </div>
+        </div>
+        <div class="matrix-result" id="mobileRes">Sélectionnez deux pays.</div>
+      </div>
+      <p style="font-size:11px;color:var(--mu);margin-top:8px;font-style:italic">Cellules grisées : guides en cours de rédaction.</p>
+    </div>
+
+    <!-- FISCALITÉ -->
+    <div class="section" id="fiscalite">
+      <div class="sec-hdr">
+        <span class="sec-title">Fiscalité et taxes</span>
+        <span class="sec-more">18 guides →</span>
+      </div>
+      <div class="guides-list">
+        <div class="guide-row" onclick="location.href='#'">
+          <div><div class="gr-title">TVA lors d'un achat intracommunautaire — règles 2026</div>
+          <div class="gr-sub">Commission européenne — directive 2006/112/CE</div></div>
+          <div class="gr-right"><span class="gr-time">8 min</span><span class="gr-badge upd">Mis à jour</span></div>
+        </div>
+        <div class="guide-row" onclick="location.href='#'">
+          <div><div class="gr-title" id="fiscRow1">Quitus fiscal ANTS : demande, délai et cas de refus</div>
+          <div class="gr-sub">Délai moyen observé : 6 jours ouvrés</div></div>
+          <div class="gr-right"><span class="gr-time">5 min</span></div>
+        </div>
+        <div class="guide-row" onclick="location.href='#'">
+          <div><div class="gr-title">BPM aux Pays-Bas : calcul et exonérations 2026</div>
+          <div class="gr-sub">Belastingdienst.nl — RDW.nl</div></div>
+          <div class="gr-right"><span class="gr-time">6 min</span><span class="gr-badge new">Nouveau</span></div>
+        </div>
+        <div class="guide-row" onclick="location.href='#'">
+          <div><div class="gr-title">Malus CO₂ en France : barème 2026 — seuil abaissé à 118 g/km</div>
+          <div class="gr-sub">Décret n° 2026-214 du 14 mars 2026</div></div>
+          <div class="gr-right"><span class="gr-time">4 min</span><span class="gr-badge hot">Modifié</span></div>
+        </div>
+        <div class="guide-row pending">
+          <div><div class="gr-title">Impuesto de matriculación en Espagne (DGT)</div>
+          <div class="gr-sub">En cours de rédaction</div></div>
+          <div class="gr-right"><span class="gr-time" style="color:var(--ln2)">À venir</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHECKLIST -->
+    <div class="section" id="documents">
+      <div class="sec-hdr">
+        <span class="sec-title">Documents à réunir</span>
+        <span class="sec-meta" id="checkLabel">Achat en Allemagne</span>
+      </div>
+      <div class="checklist">
+        <div class="cl-hdr">
+          <span class="cl-hdr-t" id="clTitle">Documents — Allemagne</span>
+          <span class="cl-prog" id="clProg">0 / 7</span>
+        </div>
+        <div class="cl-item" onclick="check(this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();check(this)}">
+          <div class="cl-box" aria-hidden="true"></div>
+          <span><strong>Fahrzeugbrief (Teil II)</strong> — titre de propriété original. Sans lui, la vente est invalide en Allemagne.</span>
+        </div>
+        <div class="cl-item" onclick="check(this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();check(this)}">
+          <div class="cl-box" aria-hidden="true"></div>
+          <span><strong>Fahrzeugschein (Teil I)</strong> — certificat d'immatriculation en cours de validité</span>
+        </div>
+        <div class="cl-item" onclick="check(this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();check(this)}">
+          <div class="cl-box" aria-hidden="true"></div>
+          <span>Contrôle technique valide — TÜV, DEKRA ou GTÜ (reconnu en France sans nouveau CT)</span>
+        </div>
+        <div class="cl-item" onclick="check(this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();check(this)}">
+          <div class="cl-box" aria-hidden="true"></div>
+          <span>Facture d'achat ou certificat de cession daté et signé des deux parties</span>
+        </div>
+        <div class="cl-item" onclick="check(this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();check(this)}">
+          <div class="cl-box" aria-hidden="true"></div>
+          <span>Rapport historique Fahrzeughistorie — AutoDNA ou ADAC (vérification kilométrage, sinistres)</span>
+          <span class="cl-opt">Recommandé</span>
+        </div>
+        <div class="cl-item" onclick="check(this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();check(this)}">
+          <div class="cl-box" aria-hidden="true"></div>
+          <span>Certificat de conformité COC — simplifie l'immatriculation, disponible chez les concessionnaires</span>
+          <span class="cl-opt">Optionnel</span>
+        </div>
+        <div class="cl-item" onclick="check(this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();check(this)}">
+          <div class="cl-box" aria-hidden="true"></div>
+          <span>Demande de quitus fiscal ANTS — à faire en ligne après l'achat, délai 5–10 jours ouvrés</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALCULATEUR -->
+    <div class="section" id="calcSection">
+      <div class="sec-hdr">
+        <span class="sec-title">Estimateur de coût d'importation</span>
+      </div>
+      <div class="calc">
+        <div class="calc-hdr">
+          Coût total estimé
+          <span class="calc-sub">Indicatif — ne remplace pas un conseil fiscal</span>
+        </div>
+        <div class="calc-body">
+          <div class="calc-grid">
+            <div class="cf"><label for="cPrix">Prix d'achat (€)</label>
+              <input id="cPrix" type="number" value="12000" oninput="calcImport()"></div>
+            <div class="cf"><label for="cCV">Puissance fiscale (CV)</label>
+              <input id="cCV" type="number" value="6" min="1" oninput="calcImport()"></div>
+            <div class="cf"><label for="cAchat">Pays d'achat</label>
+              <select id="cAchat" onchange="calcImport()">
+                <option value="DE">Allemagne</option><option value="BE">Belgique</option>
+                <option value="NL">Pays-Bas</option><option value="ES">Espagne</option><option value="IT">Italie</option>
+              </select></div>
+            <div class="cf"><label for="cDest">Destination</label>
+              <select id="cDest" onchange="calcImport()">
+                <option value="FR">France</option><option value="BE">Belgique</option>
+                <option value="DE">Allemagne</option><option value="NL">Pays-Bas</option>
+              </select></div>
+          </div>
+          <div class="calc-res">
+            <div class="cr">Carte grise<div class="cr-v" id="crCG">—</div></div>
+            <div class="cr">Malus CO₂<div class="cr-v" id="crMalus">—</div></div>
+            <div class="cr">Transport<div class="cr-v" id="crTr">—</div></div>
+            <div class="cr">Total estimé<div class="cr-v total" id="crTot">—</div></div>
+          </div>
+          <p class="calc-note">Barème IDF 2026 : 46,15 €/CV. Malus CO₂ selon décret n° 2026-214. Transport : forfait estimé selon distance. Source : ANTS, DGFIP.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOMOLOGATION -->
+    <div class="section" id="homologation">
+      <div class="sec-hdr">
+        <span class="sec-title">Contrôle technique et homologation</span>
+        <span class="sec-meta">8 pays</span>
+      </div>
+      <div class="reg-wrap">
+        <table class="reg-table" aria-label="Reconnaissance du CT par pays">
+          <thead>
+            <tr>
+              <th>Pays d'achat</th><th>Équivalent CT</th>
+              <th>Reconnu UE</th><th>COC requis</th><th>Délai</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Allemagne</td><td>TÜV / DEKRA / GTÜ</td><td><span class="pill p-ok">Reconnu</span></td><td>Non</td><td>Immédiat</td></tr>
+            <tr><td>Belgique</td><td>Contrôle technique</td><td><span class="pill p-ok">Reconnu</span></td><td>Non</td><td>Immédiat</td></tr>
+            <tr><td>Pays-Bas</td><td>APK</td><td><span class="pill p-ok">Reconnu</span></td><td>Non</td><td>Immédiat</td></tr>
+            <tr><td>Espagne</td><td>ITV</td><td><span class="pill p-ok">Reconnu</span></td><td>Non</td><td>Immédiat</td></tr>
+            <tr><td>Italie</td><td>Revisione</td><td><span class="pill p-ok">Reconnu</span></td><td>Non</td><td>Immédiat</td></tr>
+            <tr><td>Royaume-Uni</td><td>MOT</td><td><span class="pill p-warn">Partiel</span></td><td>Oui</td><td>2–6 semaines</td></tr>
+            <tr><td>Suisse</td><td>MFK (OFROU)</td><td><span class="pill p-no">Non reconnu</span></td><td>Oui</td><td>4–8 semaines</td></tr>
+            <tr><td>Norvège</td><td>EU-kontroll</td><td><span class="pill p-warn">Partiel</span></td><td>Oui</td><td>3–5 semaines</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:11px;color:var(--mu);margin-top:8px">Sources : DREAL, directive 2014/45/UE. Vérification : juin 2026.</p>
+    </div>
+
+    <!-- IMMATRICULATION -->
+    <div class="section" id="immatriculation">
+      <div class="sec-hdr">
+        <span class="sec-title">Immatriculation</span>
+        <span class="sec-meta" id="immatLabel">France — ANTS</span>
+      </div>
+      <div class="guides-list">
+        <div class="guide-row" onclick="location.href='#'">
+          <div><div class="gr-title" id="immatRow1">Carte grise française pour un véhicule importé — démarche ANTS</div>
+          <div class="gr-sub">Délai titre : 7–15 jours — ANTS.gouv.fr</div></div>
+          <div class="gr-right"><span class="gr-time">8 min</span></div>
+        </div>
+        <div class="guide-row" onclick="location.href='#'">
+          <div><div class="gr-title">Plaque d'immatriculation temporaire — certificat provisoire W</div>
+          <div class="gr-sub">Obligatoire pendant la période entre l'achat et la carte grise définitive</div></div>
+          <div class="gr-right"><span class="gr-time">3 min</span></div>
+        </div>
+        <div class="guide-row" onclick="location.href='#'">
+          <div><div class="gr-title">Taxe régionale sur les cartes grises — comparatif 2026</div>
+          <div class="gr-sub">Barème par région — de 27 €/CV (Corse) à 60 €/CV (Île-de-France)</div></div>
+          <div class="gr-right"><span class="gr-time">4 min</span><span class="gr-badge upd">2026</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARATEUR -->
+    <div class="section" id="comparateur">
+      <div class="sec-hdr">
+        <span class="sec-title">Comparer plusieurs pays d'achat</span>
+      </div>
+      <div class="comparateur">
+        <div class="comp-hdr">
+          <span class="comp-hdr-t">Comparateur de pays</span>
+          <span style="font-size:11px;color:var(--mu)">Sélectionnez jusqu'à 3 pays</span>
+        </div>
+        <div class="comp-selectors">
+          <select class="comp-sel" id="comp1"><option value="DE">Allemagne</option><option value="BE">Belgique</option><option value="NL">Pays-Bas</option><option value="ES">Espagne</option><option value="IT">Italie</option><option value="GB">Royaume-Uni</option></select>
+          <select class="comp-sel" id="comp2"><option value="BE">Belgique</option><option value="DE">Allemagne</option><option value="NL">Pays-Bas</option><option value="ES">Espagne</option><option value="IT">Italie</option><option value="GB">Royaume-Uni</option></select>
+          <select class="comp-sel" id="comp3"><option value="">— Optionnel —</option><option value="NL">Pays-Bas</option><option value="DE">Allemagne</option><option value="BE">Belgique</option><option value="ES">Espagne</option><option value="IT">Italie</option></select>
+          <button class="comp-btn" onclick="runComparator()">Comparer</button>
+        </div>
+        <div id="compResult" class="comp-empty">Sélectionnez les pays et cliquez sur Comparer.</div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="section" id="timeline">
+      <div class="sec-hdr">
+        <span class="sec-title">Parcours d'importation étape par étape</span>
+        <span class="sec-meta" id="tlMeta">DE → FR</span>
+      </div>
+      <div class="timeline" id="tlContainer">
+        <!-- généré par JS -->
+      </div>
+    </div>
+
+    <!-- OBSERVATOIRE -->
+    <div class="section" id="observatoire">
+      <div class="sec-hdr">
+        <span class="sec-title">Observatoire du marché européen</span>
+        <span class="sec-meta">Données AutoEuropa</span>
+      </div>
+      <div class="obs-grid" id="obsGrid">
+        <div class="obs-card">
+          <div class="obs-card-title">Modèles les plus disponibles <span class="obs-card-meta" id="obsDate"></span></div>
+          <div id="obsModels">
+            <div style="font-size:11px;color:var(--mu);padding:8px 0">Chargement des données...</div>
+          </div>
+        </div>
+        <div class="obs-card">
+          <div class="obs-card-title">Par pays d'achat</div>
+          <div id="obsPays">
+            <div style="font-size:11px;color:var(--mu);padding:8px 0">Chargement...</div>
+          </div>
+        </div>
+        <div class="obs-card">
+          <div class="obs-card-title">Statistiques exclusives</div>
+          <div id="obsStats">
+            <div class="obs-item"><span class="obs-item-name">Score moyen des annonces</span><span class="obs-item-val" id="statAvgScore">—</span></div>
+            <div class="obs-item"><span class="obs-item-name">Prix médian Europe</span><span class="obs-item-val" id="statMedPrice">—</span></div>
+            <div class="obs-item"><span class="obs-item-name">% de vendeurs pro</span><span class="obs-item-val" id="statProPct">—</span></div>
+            <div class="obs-item"><span class="obs-item-name">Annonces actives</span><span class="obs-item-val" id="statTotal">—</span></div>
+            <div class="obs-item"><span class="obs-item-name">Km moyen des annonces</span><span class="obs-item-val" id="statAvgKm">—</span></div>
+          </div>
+        </div>
+        <div class="obs-card">
+          <div class="obs-card-title">Répartition par carburant</div>
+          <div id="obsFuel">
+            <div style="font-size:11px;color:var(--mu);padding:8px 0">Chargement...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section" id="faq">
+      <div class="sec-hdr"><span class="sec-title">Questions fréquentes</span></div>
+      <div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="faq(this.parentElement)" tabindex="0" onkeydown="if(event.key===' '||event.key==='Enter')faq(this.parentElement)" aria-expanded="false" role="button">
+            Faut-il repasser le CT après un achat dans l'UE ?<i class="faq-icon" aria-hidden="true">+</i>
+          </div>
+          <div class="faq-a">Non, pour les pays de l'UE dont le CT est reconnu. Le CT européen en cours de validité est accepté pour l'immatriculation française. La prochaine échéance est celle du véhicule.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="faq(this.parentElement)" tabindex="0" onkeydown="if(event.key===' '||event.key==='Enter')faq(this.parentElement)" aria-expanded="false" role="button">
+            La TVA du pays d'achat est-elle récupérable ?<i class="faq-icon" aria-hidden="true">+</i>
+          </div>
+          <div class="faq-a">Pour les véhicules de plus de 6 mois ET 6 000 km, la TVA intracommunautaire ne s'applique pas. Si le véhicule est "neuf" au sens fiscal, la TVA est due dans le pays de destination au taux local.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="faq(this.parentElement)" tabindex="0" onkeydown="if(event.key===' '||event.key==='Enter')faq(this.parentElement)" aria-expanded="false" role="button">
+            Quel est le délai réel pour immatriculer en France ?<i class="faq-icon" aria-hidden="true">+</i>
+          </div>
+          <div class="faq-a">Quitus fiscal ANTS (5–10 j) + carte grise (7–15 j). Compter 2 à 4 semaines au total. Prévoir une assurance provisoire et conserver les plaques d'origine pendant cette période.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="faq(this.parentElement)" tabindex="0" onkeydown="if(event.key===' '||event.key==='Enter')faq(this.parentElement)" aria-expanded="false" role="button">
+            Peut-on importer sans passer par un professionnel ?<i class="faq-icon" aria-hidden="true">+</i>
+          </div>
+          <div class="faq-a">Oui, pour tout achat intracommunautaire. Les démarches sont réalisables seul. La complexité varie selon le pays d'origine : simple depuis l'Allemagne ou la Belgique, plus technique depuis le Royaume-Uni ou la Suisse.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MISES À JOUR -->
+    <div class="section" id="mises-a-jour">
+      <div class="sec-hdr"><span class="sec-title">Dernières mises à jour</span></div>
+      <div>
+        <div class="upd-item">
+          <span class="upd-date">5 août 2026</span>
+          <div><div class="upd-title"><span class="gr-badge hot" style="margin-right:6px">Réglementation</span>Malus CO₂ 2026 — seuil abaissé à 118 g/km</div>
+          <div class="upd-sub">Décret n° 2026-214 — affecte tous les guides fiscaux FR</div></div>
+        </div>
+        <div class="upd-item">
+          <span class="upd-date">12 juil.</span>
+          <div><div class="upd-title"><span class="gr-badge new" style="margin-right:6px">Nouveau</span>BPM Pays-Bas : barème révisé et simulateur intégré</div>
+          <div class="upd-sub">Ministerie van Financiën NL — Belastingdienst.nl</div></div>
+        </div>
+        <div class="upd-item">
+          <span class="upd-date">3 juin</span>
+          <div><div class="upd-title">Guide post-Brexit mis à jour — procédures homologation DVSA</div>
+          <div class="upd-sub">Affecte les importations UK → UE</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIGNATURE ÉDITORIALE -->
+    <div class="section" style="border-bottom:none;padding-bottom:0">
+      <div class="editorial">
+        <strong>Auteur :</strong> Équipe éditoriale AutoEuropa<br>
+        <strong>Dernière vérification :</strong> 5 août 2026<br>
+        <strong>Version :</strong> 4.2 — <a href="#" style="color:var(--ac)">Historique des modifications</a><br>
+        <strong>Sources officielles :</strong> ANTS.gouv.fr, Commission européenne (directive 2006/112/CE, directive 2014/45/UE), DGFIP, KBA.de, RDW.nl, Belastingdienst.nl, SPF Finances BE, DREAL
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── SIDEBAR DROITE ── -->
+  <aside class="right-col" aria-label="Informations complémentaires">
+
+    <div class="sb-cta">
+      <div class="sb-cta-t" id="sbCtaT">Annonces en Allemagne</div>
+      <div class="sb-cta-s">Triées par score et par économie estimée.</div>
+      <button class="sb-cta-btn" id="sbCtaBtn" onclick="location.href='search.html?country=DE'">Voir les annonces</button>
+    </div>
+
+    <div class="sb-block">
+      <div class="sb-hdr">Modèles importés</div>
+      <div class="sb-annonces">
+        <div class="sb-ann-hdr">
+          Disponibles en Allemagne
+          <a style="font-size:11px;color:var(--ac);cursor:pointer" onclick="location.href='search.html?country=DE'">Voir tout →</a>
+        </div>
+        <div class="sb-ann-item" onclick="location.href='search.html?make=Volkswagen&model=Golf&country=DE'">
+          VW Golf <span class="sb-ann-count" id="mdl-golf">—</span>
+        </div>
+        <div class="sb-ann-item" onclick="location.href='search.html?make=BMW&country=DE'">
+          BMW Série 3 <span class="sb-ann-count" id="mdl-bmw3">—</span>
+        </div>
+        <div class="sb-ann-item" onclick="location.href='search.html?make=Audi&model=A4&country=DE'">
+          Audi A4 <span class="sb-ann-count" id="mdl-a4">—</span>
+        </div>
+        <div class="sb-ann-item" onclick="location.href='search.html?make=Mercedes-Benz&country=DE'">
+          Mercedes Classe C <span class="sb-ann-count" id="mdl-merc">—</span>
+        </div>
+        <div class="sb-ann-item" onclick="location.href='search.html?make=Tesla&country=DE'">
+          Tesla Model 3 <span class="sb-ann-count" id="mdl-t3">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-block">
+      <div class="sb-hdr">Par pays d'achat</div>
+      <div class="sb-item" onclick="setAchat('DE')" tabindex="0" role="link">Allemagne <span class="sb-item-r">14 guides</span></div>
+      <div class="sb-item" onclick="setAchat('BE')" tabindex="0" role="link">Belgique <span class="sb-item-r">9 guides</span></div>
+      <div class="sb-item" onclick="setAchat('NL')" tabindex="0" role="link">Pays-Bas <span class="sb-item-r">7 guides</span></div>
+      <div class="sb-item" onclick="setAchat('ES')" tabindex="0" role="link">Espagne <span class="sb-item-r">5 guides</span></div>
+      <div class="sb-item" onclick="setAchat('IT')" tabindex="0" role="link">Italie <span class="sb-item-r">4 guides</span></div>
+      <div class="sb-item" onclick="setAchat('GB')" tabindex="0" role="link" style="color:var(--mu)">Royaume-Uni <span class="sb-item-r">3 guides</span></div>
+    </div>
+
+    <div class="sb-block">
+      <div class="sb-hdr">Sources officielles</div>
+      <a class="sb-item" href="https://ants.gouv.fr" target="_blank" rel="noopener" tabindex="0">ANTS.gouv.fr <span class="sb-item-r">↗</span></a>
+      <a class="sb-item" href="https://rdw.nl" target="_blank" rel="noopener" tabindex="0">RDW.nl — Pays-Bas <span class="sb-item-r">↗</span></a>
+      <a class="sb-item" href="https://kba.de" target="_blank" rel="noopener" tabindex="0">KBA.de — Allemagne <span class="sb-item-r">↗</span></a>
+      <a class="sb-item" href="https://ec.europa.eu/taxation_customs" target="_blank" rel="noopener" tabindex="0">Commission européenne <span class="sb-item-r">↗</span></a>
+    </div>
+
+    <div class="sb-meta">
+      Vérifié le 5 août 2026<br>
+      Révision prévue : novembre 2026<br>
+      Régi par le droit de l'UE en vigueur
+    </div>
+
+  </aside>
+</div><!-- /page-grid -->
+</div><!-- /outer -->
+
+<footer>
+  <div class="f-in">
+    <div class="f-logo">Auto<b>Europa</b></div>
+    <div class="f-links">
+      <a href="index.html">Accueil</a>
+      <a href="search.html">Annonces</a>
+      <a href="#">Mentions légales</a>
+      <a href="#">Confidentialité</a>
+    </div>
+    <span class="f-copy">© 2026 AutoEuropa</span>
+  </div>
+</footer>
+
+<script>
+'use strict';
+
+var API = 'https://scraper-autoeuropa3-production.up.railway.app';
+
+var PAYS = {
+  FR:{n:'France',fl:'🇫🇷',cg:46.15,tr:0,delai:12,cout:480,eco:2850,docs:7,src:12,cplx:'Moyenne',tvaTaux:20,tvaNote:'TVA FR 20 % due si véhicule neuf au sens fiscal'},
+  BE:{n:'Belgique',fl:'🇧🇪',cg:61,tr:150,delai:8,cout:320,eco:1800,docs:6,src:10,cplx:'Simple',tvaTaux:21,tvaNote:'Véhicules >6 mois et >6000 km exonérés TVA intracommunautaire'},
+  DE:{n:'Allemagne',fl:'🇩🇪',cg:35,tr:350,delai:14,cout:580,eco:3200,docs:8,src:14,cplx:'Moyenne',tvaTaux:19,tvaNote:'Occasions >6 mois et >6000 km : pas de TVA intracommunautaire'},
+  NL:{n:'Pays-Bas',fl:'🇳🇱',cg:52,tr:250,delai:10,cout:420,eco:2200,docs:6,src:9,cplx:'Moyenne',tvaTaux:21,tvaNote:'BPM applicable à l\'immatriculation NL. À l\'export : récupération partielle possible'},
+  ES:{n:'Espagne',fl:'🇪🇸',cg:28,tr:600,delai:18,cout:650,eco:1500,docs:7,src:8,cplx:'Complexe',tvaTaux:21,tvaNote:'IVA 21 %. Occasions >6 mois et >6000 km : pas de TVA intracommunautaire'},
+  IT:{n:'Italie',fl:'🇮🇹',cg:30,tr:700,delai:20,cout:720,eco:1200,docs:8,src:8,cplx:'Complexe',tvaTaux:22,tvaNote:'IVA 22 %. Idem règles TVA UE pour les occasions'},
+  AT:{n:'Autriche',fl:'🇦🇹',cg:38,tr:450,delai:14,cout:510,eco:1900,docs:7,src:9,cplx:'Moyenne',tvaTaux:20,tvaNote:'NOVA (Normverbrauchsabgabe) applicable à l\'immatriculation autrichienne'},
+  GB:{n:'Royaume-Uni',fl:'🇬🇧',cg:40,tr:500,delai:30,cout:1200,eco:800,docs:10,src:11,cplx:'Très complexe',tvaTaux:20,tvaNote:'Post-Brexit : droits douane possibles, COC obligatoire, homologation individuelle'},
+  PL:{n:'Pologne',fl:'🇵🇱',cg:22,tr:700,delai:16,cout:550,eco:2000,docs:7,src:7,cplx:'Moyenne',tvaTaux:23,tvaNote:'Occasions >6 mois et >6000 km : pas de TVA intracommunautaire'},
+};
+
+var GUIDES_DISPO = {
+  'DE-FR':'#','BE-FR':'#','NL-FR':'#','ES-FR':'#','GB-FR':'#',
+  'DE-BE':'#','NL-BE':'#','FR-BE':'#',
+  'FR-DE':'#','BE-DE':'#','NL-DE':'#',
+};
+
+var ACHAT_COLS = ['DE','FR','BE','NL','ES','IT','GB'];
+var DEST_ROWS  = ['FR','BE','DE','NL','ES','IT','AT'];
+
+var currentDest  = 'FR';
+var currentAchat = 'DE';
+var checkDone = 0;
+var checkTotal = 0;
+
+// ── MISE À JOUR PRINCIPALE ────────────────────────────────────────────────────
+function update() {
+  var dest  = document.getElementById('selDest').value;
+  var achat = document.getElementById('selAchat').value;
+  if (dest === achat) { return; }
+  currentDest  = dest;
+  currentAchat = achat;
+  var pd = PAYS[dest];
+  var pa = PAYS[achat];
+
+  // Flags
+  document.getElementById('flagDest').textContent  = pd.fl;
+  document.getElementById('flagAchat').textContent = pa.fl;
+
+  // Titre hero
+  document.getElementById('heroTitle').textContent =
+    'Importer un véhicule depuis ' + pa.n + ' vers ' + pd.n;
+  document.getElementById('heroSub').textContent =
+    'Procédures officielles, fiscalité, homologation et immatriculation pour importer depuis ' + pa.n + ' vers ' + pd.n + '.';
+
+  // Dashboard hero
+  var cplxColor = pa.cplx === 'Simple' ? 'color:var(--gn)' :
+                  pa.cplx === 'Complexe' || pa.cplx === 'Très complexe' ? 'color:var(--rd)' : '';
+  document.getElementById('hdTime').textContent     = pa.delai + ' j. démarches';
+  document.getElementById('hdComplexite').innerHTML = '<span style="' + cplxColor + '">' + pa.cplx + '</span>';
+  document.getElementById('hdSources').textContent  = pa.src;
+
+  // Estimation
+  document.getElementById('estBadge').textContent = 'Calculé pour ' + achat + ' → ' + dest;
+  document.getElementById('estDelai').textContent = pa.delai + ' jours';
+  document.getElementById('estCout').textContent  = pa.cout.toLocaleString('fr-FR') + ' €';
+  document.getElementById('estEco').textContent   = '−' + pa.eco.toLocaleString('fr-FR') + ' €';
+  document.getElementById('estDocs').textContent  = pa.docs;
+
+  // Guides featured
+  document.getElementById('guidesTitle').textContent = 'Guides depuis ' + pa.n;
+  document.getElementById('g1path').textContent  = achat + ' → ' + dest;
+  document.getElementById('g1title').textContent = 'Acheter en ' + pa.n + ' et l\'immatriculer en ' + pd.n;
+  document.getElementById('g1desc').textContent  = 'Procédure complète pour importer depuis ' + pa.n + ' vers ' + pd.n + '. Documents, fiscalité, homologation. TVA : ' + pa.tvaNote + '.';
+  document.getElementById('g2path').textContent  = achat + ' → ' + dest;
+  document.getElementById('g2title').textContent = pa.n + ' : fiscalité et documents';
+  document.getElementById('g2desc').textContent  = pa.tvaNote + '. Complexité : ' + pa.cplx + '.';
+
+  // Sidebar CTA
+  document.getElementById('sbCtaT').textContent = 'Annonces disponibles en ' + pa.n;
+  document.getElementById('sbCtaBtn').onclick = function() { location.href = 'search.html?country=' + achat; };
+
+  // Checklist
+  document.getElementById('checkLabel').textContent  = 'Achat en ' + pa.n;
+  document.getElementById('clTitle').textContent     = 'Documents — ' + pa.n;
+  document.getElementById('toolCheckSub').textContent = 'Pour un achat en ' + pa.n;
+
+  // Immatriculation
+  document.getElementById('immatLabel').textContent = pd.n + ' — ' + (dest==='FR'?'ANTS':dest==='BE'?'DIV':dest==='DE'?'KBA':dest==='NL'?'RDW':'Services locaux');
+  document.getElementById('immatRow1').textContent  = 'Immatriculation en ' + pd.n + ' d\'un véhicule importé de ' + pa.n;
+
+  // Fiscalité — adapter quitus si pas France
+  document.getElementById('fiscRow1').textContent = dest === 'FR'
+    ? 'Quitus fiscal ANTS : demande, délai et cas de refus'
+    : 'Démarche d\'immatriculation en ' + pd.n + ' pour un véhicule étranger';
+
+  // Calculateur — pré-sélectionner
+  var cAchat = document.getElementById('cAchat');
+  var cDest  = document.getElementById('cDest');
+  for (var i = 0; i < cAchat.options.length; i++) if (cAchat.options[i].value === achat) cAchat.selectedIndex = i;
+  for (var j = 0; j < cDest.options.length;  j++) if (cDest.options[j].value  === dest)  cDest.selectedIndex  = j;
+  calcImport();
+
+  // Matrice
+  buildMatrix();
+
+  // Breadcrumb
+  document.getElementById('bcCurr').textContent = pa.n + ' → ' + pd.n;
+
+  // SEO
+  var titleEl = document.getElementById('metaTitle');
+  var descEl  = document.getElementById('metaDesc');
+  if (titleEl) titleEl.textContent = 'Importer une voiture depuis ' + pa.n + ' vers ' + pd.n + ' — AutoEuropa';
+  if (descEl)  descEl.setAttribute('content', 'Guide complet pour importer un véhicule depuis ' + pa.n + ' vers ' + pd.n + '. Fiscalité TVA, homologation, immatriculation, coût estimé ' + pa.cout + ' €.');
+
+  // Annonces API
+  loadAnnonces(achat);
+
+  // Préférences localStorage
+  try { localStorage.setItem('ae_achat', achat); localStorage.setItem('ae_dest', dest); } catch(e){}
+}
+
+function setAchat(code) {
+  var sel = document.getElementById('selAchat');
+  for (var i = 0; i < sel.options.length; i++) if (sel.options[i].value === code) { sel.selectedIndex = i; break; }
+  update();
+}
+
+// ── ANNONCES API ──────────────────────────────────────────────────────────────
+function loadAnnonces(achat) {
+  document.getElementById('hdAnnonces').textContent = '…';
+
+  fetch(API + '/api/veh
+  fetch(API + '/api/vehicles?country=' + achat + '&limit=1', {signal: AbortSignal.timeout(5000)})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .catch(function(){ return null; })
+    .then(function(d) {
+      var count = d && d.total ? d.total : null;
+      document.getElementById('hdAnnonces').textContent = count ? count.toLocaleString('fr-FR') : '—';
+      var g1ann = document.getElementById('g1ann');
+      if (g1ann && count) g1ann.textContent = count.toLocaleString('fr-FR') + ' annonces ' + achat + ' →';
+    });
+  fetch(API + '/api/vehicles?country=BE&limit=1', {signal: AbortSignal.timeout(4000)})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .catch(function(){ return null; })
+    .then(function(d) {
+      var el = document.getElementById('g2ann');
+      if (el && d && d.total) el.textContent = d.total.toLocaleString('fr-FR');
+    });
+}
+
+function buildMatrix() {
+  var tbody = document.getElementById('matrixBody');
+  if (!tbody) return;
+  var count = 0;
+  var ACHAT_COLS = ['DE','FR','BE','NL','ES','IT','GB'];
+  var DEST_ROWS  = ['FR','BE','DE','NL','ES','IT','AT'];
+  var GUIDES_DISPO = {
+    'DE-FR':'#','BE-FR':'#','NL-FR':'#','ES-FR':'#','GB-FR':'#',
+    'DE-BE':'#','NL-BE':'#','FR-BE':'#','FR-DE':'#','BE-DE':'#','NL-DE':'#',
+  };
+  var html = '';
+  ACHAT_COLS.forEach(function(ac) {
+    var pa = PAYS[ac];
+    html += '<tr><td class="rh' + (ac === currentAchat ? ' me' : '') + '">' + pa.fl + ' ' + pa.n + '</td>';
+    DEST_ROWS.forEach(function(dest) {
+      if (ac === dest) {
+        html += '<td><span class="mc self">—</span></td>';
+      } else {
+        var key = ac + '-' + dest;
+        var url = GUIDES_DISPO[key];
+        if (url) {
+          count++;
+          html += '<td><a class="mc ok" href="#" onclick="event.preventDefault();setParams(\'' + ac + '\',\'' + dest + '\')">Voir</a></td>';
+        } else {
+          html += '<td><span class="mc">·</span></td>';
+        }
+      }
+    });
+    html += '</tr>';
+  });
+  tbody.innerHTML = html;
+  var el = document.getElementById('matrixCount');
+  if (el) el.textContent = count + ' disponibles';
+}
+
+function setParams(achat, dest) {
+  var selA = document.getElementById('selAchat');
+  var selD = document.getElementById('selDest');
+  for (var i=0;i<selA.options.length;i++) if(selA.options[i].value===achat){selA.selectedIndex=i;break;}
+  for (var j=0;j<selD.options.length;j++) if(selD.options[j].value===dest){selD.selectedIndex=j;break;}
+  update();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function updateMobile() {
+  var ac   = document.getElementById('mAchat') ? document.getElementById('mAchat').value : 'DE';
+  var dest = document.getElementById('mDest')  ? document.getElementById('mDest').value  : 'FR';
+  var res  = document.getElementById('mobileRes');
+  if (!res) return;
+  if (ac === dest) { res.className='matrix-result'; res.textContent='Pays identiques.'; return; }
+  var GUIDES_DISPO = {'DE-FR':'#','BE-FR':'#','NL-FR':'#','ES-FR':'#','GB-FR':'#','DE-BE':'#','NL-BE':'#','FR-BE':'#','FR-DE':'#','BE-DE':'#','NL-DE':'#'};
+  var key = ac + '-' + dest;
+  var url = GUIDES_DISPO[key];
+  if (url) {
+    res.className='matrix-result found';
+    res.textContent = 'Guide disponible : ' + PAYS[ac].n + ' → ' + PAYS[dest].n + ' — cliquez →';
+    res.onclick = function(){ setParams(ac,dest); };
+  } else {
+    res.className='matrix-result';
+    res.textContent = 'Guide en cours : ' + PAYS[ac].n + ' → ' + PAYS[dest].n + '.';
+    res.onclick = null;
+  }
+}
+
+function calcImport() {
+  var prix  = parseFloat(document.getElementById('cPrix').value)||0;
+  var cv    = parseInt(document.getElementById('cCV').value)||0;
+  var achat = document.getElementById('cAchat').value;
+  var dest  = document.getElementById('cDest').value;
+  var pd = PAYS[dest]||PAYS.FR;
+  var pa = PAYS[achat]||PAYS.DE;
+  var cg = cv * pd.cg;
+  var co2 = cv * 25;
+  var malus = 0;
+  if (dest==='FR'){ if(co2>218) malus=(co2-218)*65+60000; else if(co2>150) malus=(co2-150)*10; }
+  else if (dest==='BE'){ malus=co2>145?(co2-145)*25:0; }
+  var transport = achat===dest ? 0 : pa.tr;
+  var total = cg + malus + transport;
+  var fmt = function(n){ return Math.round(n).toLocaleString('fr-FR')+' €'; };
+  document.getElementById('crCG').textContent    = fmt(cg);
+  document.getElementById('crMalus').textContent = malus>0?fmt(malus):'Aucun';
+  document.getElementById('crTr').textContent    = fmt(transport);
+  document.getElementById('crTot').textContent   = fmt(total);
+}
+
+function runComparator() {
+  var pays = [
+    document.getElementById('comp1').value,
+    document.getElementById('comp2').value,
+    document.getElementById('comp3') ? document.getElementById('comp3').value : '',
+  ].filter(function(v){ return v&&v!==''; });
+  if (pays.length<2){ document.getElementById('compResult').innerHTML='<div class="comp-empty">Sélectionnez au moins 2 pays.</div>'; return; }
+  var vals = {
+    'DE':{delai:'14 j.',cout:'580 €',tva:'19 % (souvent exonéré)',cplx:'Moyenne',ct:'<span class="pill p-ok">Reconnu</span>',avantage:'Prix bas, fort volume, TÜV reconnu'},
+    'BE':{delai:'8 j.',cout:'320 €',tva:'21 % (souvent exonéré)',cplx:'Simple',ct:'<span class="pill p-ok">Reconnu</span>',avantage:'Procédure rapide, prix compétitifs'},
+    'NL':{delai:'10 j.',cout:'420 €',tva:'21 % (souvent exonéré)',cplx:'Moyenne',ct:'<span class="pill p-ok">Reconnu</span>',avantage:'Entretien rigoureux, APK reconnu'},
+    'ES':{delai:'18 j.',cout:'650 €',tva:'21 % (souvent exonéré)',cplx:'Complexe',ct:'<span class="pill p-ok">Reconnu</span>',avantage:'Prix attractifs, soleil = pas de rouille'},
+    'IT':{delai:'20 j.',cout:'720 €',tva:'22 % (souvent exonéré)',cplx:'Complexe',ct:'<span class="pill p-ok">Reconnu</span>',avantage:'Niche premium, Alfa/Lancia locaux'},
+    'GB':{delai:'30 j.',cout:'1 200 €',tva:'20 % + droits douane',cplx:'Très complexe',ct:'<span class="pill p-warn">Partiel</span>',avantage:'Modèles exclusifs UK market'},
+    'FR':{delai:'—',cout:'—',tva:'20 %',cplx:'—',ct:'<span class="pill p-ok">Reconnu</span>',avantage:'Aucun (pays de destination)'},
+  };
+  var rows=[
+    {lbl:'Délai moyen',key:'delai'},{lbl:'Coût admin.',key:'cout'},
+    {lbl:'TVA',key:'tva'},{lbl:'Complexité',key:'cplx'},
+    {lbl:'CT reconnu UE',key:'ct'},{lbl:'Avantage',key:'avantage'},
+  ];
+  var html='<div style="overflow-x:auto"><table class="comp-table"><thead><tr><th>Critère</th>';
+  pays.forEach(function(p){ html+='<th>'+PAYS[p].fl+' '+PAYS[p].n+'</th>'; });
+  html+='</tr></thead><tbody>';
+  rows.forEach(function(row){
+    html+='<tr><td>'+row.lbl+'</td>';
+    pays.forEach(function(p){ html+='<td>'+(vals[p]?vals[p][row.key]:'—')+'</td>'; });
+    html+='</tr>';
+  });
+  html+='</tbody></table></div>';
+  document.getElementById('compResult').innerHTML=html;
+}
+
+function check(item){
+  var was=item.classList.contains('done');
+  item.classList.toggle('done');
+  item.setAttribute('aria-checked',!was);
+  checkDone+=was?-1:1;
+  var el=document.getElementById('clProg');
+  if(el) el.textContent=checkDone+' / '+checkTotal;
+}
+
+function initChecklist(){
+  var items=document.querySelectorAll('.cl-item');
+  checkTotal=items.length; checkDone=0;
+  var el=document.getElementById('clProg');
+  if(el) el.textContent='0 / '+checkTotal;
+}
+
+function faq(item){
+  var was=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(i){
+    i.classList.remove('open');
+    var q=i.querySelector('.faq-q'); if(q) q.setAttribute('aria-expanded','false');
+  });
+  if(!was){ item.classList.add('open'); var q=item.querySelector('.faq-q'); if(q) q.setAttribute('aria-expanded','true'); }
+}
+
+function scrollTo(id,el){
+  var t=document.getElementById(id);
+  if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  if(el){ document.querySelectorAll('.doc-nav-item').forEach(function(a){a.classList.remove('active');}); el.classList.add('active'); }
+}
+
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var id=e.target.id;
+      document.querySelectorAll('.doc-nav-item').forEach(function(a){
+        a.classList.toggle('active',a.getAttribute('href')==='#'+id);
+      });
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+['presentation','estimation','outils','documents','fiscalite','homologation','immatriculation','comparateur','faq','mises-a-jour'].forEach(function(id){
+  var el=document.getElementById(id); if(el) observer.observe(el);
+});
+
+try {
+  var savedAchat=localStorage.getItem('ae_achat');
+  var savedDest=localStorage.getItem('ae_dest');
+  if(savedAchat&&PAYS[savedAchat]){ var sA=document.getElementById('selAchat'); for(var i=0;i<sA.options.length;i++) if(sA.options[i].value===savedAchat){sA.selectedIndex=i;break;} }
+  if(savedDest&&PAYS[savedDest]){ var sD=document.getElementById('selDest'); for(var j=0;j<sD.options.length;j++) if(sD.options[j].value===savedDest){sD.selectedIndex=j;break;} }
+} catch(e){}
+
+buildMatrix(); calcImport(); initChecklist(); update(); updateMobile();
+
+
+// ── ASSISTANT D'IMPORT ────────────────────────────────────────────────────────
+var STEPS = [
+  {
+    q: 'Dans quel pays habitez-vous ?',
+    hint: 'Le pays où vous souhaitez immatriculer le véhicule.',
+    key: 'dest',
+    options: [
+      {icon:'🇫🇷',label:'France'},
+      {icon:'🇧🇪',label:'Belgique'},
+      {icon:'🇩🇪',label:'Allemagne'},
+      {icon:'🇳🇱',label:'Pays-Bas'},
+      {icon:'🇪🇸',label:'Espagne'},
+      {icon:'🇮🇹',label:'Italie'},
+      {icon:'🇦🇹',label:'Autriche'},
+    ]
+  },
+  {
+    q: 'Dans quel pays achetez-vous le véhicule ?',
+    hint: 'Le pays où se trouve le vendeur et le véhicule actuellement.',
+    key: 'achat',
+    options: [
+      {icon:'🇩🇪',label:'Allemagne'},
+      {icon:'🇧🇪',label:'Belgique'},
+      {icon:'🇳🇱',label:'Pays-Bas'},
+      {icon:'🇪🇸',label:'Espagne'},
+      {icon:'🇮🇹',label:'Italie'},
+      {icon:'🇬🇧',label:'Royaume-Uni'},
+    ]
+  },
+  {
+    q: 'Le véhicule est-il neuf ou d'occasion ?',
+    hint: 'Au sens fiscal : neuf = moins de 6 mois OU moins de 6 000 km.',
+    key: 'type',
+    options: [
+      {icon:'✨',label:'Occasion (>6 mois et >6 000 km)'},
+      {icon:'🆕',label:'Neuf ou quasi-neuf (<6 mois ou <6 000 km)'},
+    ]
+  },
+  {
+    q: 'Comment souhaitez-vous le ramener ?',
+    hint: 'Cela influence les démarches et le coût de transport.',
+    key: 'transport',
+    options: [
+      {icon:'🚗',label:'Je le conduis moi-même'},
+      {icon:'🚛',label:'Par transporteur professionnel'},
+      {icon:'🚢',label:'Par bateau ou train'},
+    ]
+  },
+  {
+    q: 'Avez-vous des contraintes particulières ?',
+    hint: 'Cela nous aide à adapter les recommandations.',
+    key: 'contrainte',
+    options: [
+      {icon:'⚡',label:'Véhicule électrique ou hybride'},
+      {icon:'🏢',label:'Achat en tant que professionnel'},
+      {icon:'⏱',label:'Import urgent (moins de 2 semaines)'},
+      {icon:'✅',label:'Aucune contrainte particulière'},
+    ]
+  }
+];
+
+var apAnswers = {};
+var apStep = 0;
+
+function openAssistant() {
+  apAnswers = {};
+  apStep = 0;
+  document.getElementById('assistantModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderStep();
+}
+
+function closeAssistant() {
+  document.getElementById('assistantModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderStep() {
+  var body = document.getElementById('apBody');
+  var nav  = document.getElementById('apNav');
+  var bar  = document.getElementById('apBar');
+
+  if (apStep >= STEPS.length) {
+    renderAssistantResult();
+    return;
+  }
+
+  var step = STEPS[apStep];
+  var pct  = Math.round(((apStep + 1) / (STEPS.length + 1)) * 100);
+  bar.style.width = pct + '%';
+
+  var html = '<div class="ap-step-num">Étape ' + (apStep+1) + ' sur ' + STEPS.length + '</div>';
+  html += '<div class="ap-question">' + step.q + '</div>';
+  html += '<div class="ap-hint">' + step.hint + '</div>';
+  html += '<div class="ap-options">';
+  step.options.forEach(function(opt, i) {
+    var sel = apAnswers[step.key] === opt.label ? ' selected' : '';
+    html += '<button class="ap-option' + sel + '" onclick="selectOption('' + step.key + '','' + opt.label.replace(/'/g,"\'") + '',this)">'
+          + '<span class="ap-option-icon">' + opt.icon + '</span>'
+          + '<span>' + opt.label + '</span>'
+          + '</button>';
+  });
+  html += '</div>';
+  body.innerHTML = html;
+
+  var backHtml = apStep > 0
+    ? '<button class="ap-back" onclick="apStep--;renderStep()">← Retour</button>'
+    : '<span></span>';
+  var hasAnswer = !!apAnswers[step.key];
+  nav.innerHTML = backHtml
+    + '<button class="ap-next" onclick="apNext()" ' + (hasAnswer?'':'disabled') + ' id="apNext">'
+    + (apStep === STEPS.length - 1 ? 'Générer mon parcours →' : 'Suivant →')
+    + '</button>';
+}
+
+function selectOption(key, val, el) {
+  apAnswers[key] = val;
+  document.querySelectorAll('.ap-option').forEach(function(b){ b.classList.remove('selected'); });
+  el.classList.add('selected');
+  var btn = document.getElementById('apNext');
+  if (btn) btn.removeAttribute('disabled');
+}
+
+function apNext() {
+  var step = STEPS[apStep];
+  if (!apAnswers[step.key]) return;
+  apStep++;
+  renderStep();
+}
+
+function renderAssistantResult() {
+  var bar = document.getElementById('apBar');
+  bar.style.width = '100%';
+
+  var dest   = apAnswers.dest || 'France';
+  var achat  = apAnswers.achat || 'Allemagne';
+  var isNeuf = apAnswers.type && apAnswers.type.includes('Neuf');
+  var isUK   = achat === 'Royaume-Uni';
+
+  // Calculer l'indice
+  var score = 72;
+  if (isNeuf) score -= 15;
+  if (isUK) score -= 25;
+  if (achat === 'Belgique') score += 8;
+
+  var steps = [
+    {title:'Recherche du véhicule',desc:'Vérifiez l'historique via AutoDNA ou Carfax. Consultez les annonces AutoEuropa filtrées par pays.',meta:['Gratuit','1–5 jours']},
+    {title:'Contact et négociation',desc:'Confirmez la disponibilité du Fahrzeugbrief (titre de propriété). Pour le Royaume-Uni, vérifiez l'absence de finance (HPI Check).',meta:['Gratuit','1–2 jours']},
+    {title:'Documents avant achat',desc:isNeuf
+      ? 'Véhicule neuf au sens fiscal : préparez la déclaration TVA intracommunautaire. La TVA sera due dans votre pays.'
+      : 'Occasion standard : pas de TVA intracommunautaire. Demandez le titre de propriété original et le CT en cours.',
+      meta:['Documents','1 jour']},
+    {title:'Paiement sécurisé',desc:'Privilégiez le virement bancaire SEPA traçable. Évitez le cash ou Western Union. Conservez tous les justificatifs.',meta:['Virement SEPA','1 jour']},
+    {title:'Transport',desc:apAnswers.transport === 'Je le conduis moi-même'
+      ? 'Souscrivez une assurance provisoire valable dans le pays d'achat. Conservez les plaques d'origine et le certificat de cession.'
+      : 'Demandez un devis à 2–3 transporteurs. Prix moyen : ' + (achat==='Allemagne'?'350':achat==='Belgique'?'150':'500') + ' €.',
+      meta:[apAnswers.transport==='Je le conduis moi-même'?'Assurance provisoire':'Devis transporteur','1–3 jours']},
+    {title:isNeuf?'Déclaration TVA':'Quitus fiscal',
+      desc:isNeuf
+        ? 'Déclarez le véhicule auprès des services fiscaux de votre pays dans les 15 jours suivant l'acquisition.'
+        : (dest==='France'?'Demandez le quitus fiscal en ligne sur ANTS.gouv.fr. Délai moyen : 6 jours ouvrés.':'Démarche équivalente auprès de l'administration fiscale de '+dest+'.'),
+      meta:['En ligne','5–10 jours']},
+    {title:'Immatriculation',
+      desc:dest==='France'
+        ? 'Faites votre demande de carte grise sur ANTS.gouv.fr. Prévoyez le certificat de conformité COC si disponible.'
+        : 'Contactez l'administration compétente en '+dest+' pour l'immatriculation du véhicule étranger.',
+      meta:['Obligatoire','7–15 jours']},
+    {title:'Assurance définitive',
+      desc:'Souscrivez votre assurance avec la nouvelle immatriculation. Comparez au moins 3 devis. Conservez l'assurance provisoire jusqu'à réception de la carte grise.',
+      meta:['Obligatoire','1 jour']},
+  ];
+
+  var html = '<div class="ap-result">';
+  html += '<div class="apr-title">Votre parcours personnalisé</div>';
+  html += '<div class="apr-sub">' + achat + ' → ' + dest + ' · ' + (isNeuf?'Véhicule neuf':'Occasion') + ' · ' + (apAnswers.transport||'Transport standard') + '</div>';
+
+  html += '<div class="apr-index">';
+  html += '<div class="apr-score-wrap"><div class="apr-score"><span class="apr-score-n">' + score + '</span><span class="apr-score-l">/100</span></div></div>';
+  html += '<div class="apr-index-info"><div class="apr-index-title">Indice AutoEuropa — ' + achat + ' → ' + dest + '</div>';
+  var label = score >= 80 ? 'Excellent choix' : score >= 65 ? 'Bon choix' : score >= 50 ? 'Acceptable' : 'Complexe — prévoir de l'aide';
+  html += '<div class="apr-index-sub">' + label + (isNeuf?' · TVA supplémentaire due':'') + (isUK?' · Procédure post-Brexit complexe':'') + '</div></div>';
+  html += '</div>';
+
+  html += '<div class="apr-steps">';
+  steps.forEach(function(s,i){
+    html += '<div class="apr-step">';
+    html += '<div class="apr-step-n">' + (i+1) + '</div>';
+    html += '<div class="apr-step-content"><div class="apr-step-title">' + s.title + '</div>';
+    html += '<div class="apr-step-desc">' + s.desc + '</div>';
+    html += '<div class="apr-step-meta">';
+    s.meta.forEach(function(m){ html += '<span class="apr-step-tag">' + m + '</span>'; });
+    html += '</div></div></div>';
+  });
+  html += '</div>';
+
+  html += '<div class="apr-actions">';
+  html += '<button class="apr-btn" onclick="closeAssistant()">Fermer</button>';
+  html += '<button class="apr-btn" onclick="closeAssistant();setParams('' + achat.slice(0,2).toUpperCase() + '','FR')">Voir le guide complet</button>';
+  html += '<button class="apr-btn primary" onclick="location.href='search.html?country=' + achat.slice(0,2).toUpperCase() + ''">Voir les annonces</button>';
+  html += '</div></div>';
+
+  document.getElementById('apBody').innerHTML = html;
+  document.getElementById('apNav').innerHTML = '';
+}
+
+// ── OBSERVATOIRE — chargement données réelles ──────────────────────────────
+function loadObservatoire() {
+  fetch(API + '/api/stats', {signal: AbortSignal.timeout(6000)})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .catch(function(){ return null; })
+    .then(function(d) {
+      if (!d) return;
+      var now = new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});
+      document.getElementById('obsDate').textContent = now;
+
+      // Stats globales
+      if (d.total) document.getElementById('statTotal').textContent = d.total.toLocaleString('fr-FR');
+      if (d.avgScore) document.getElementById('statAvgScore').textContent = Math.round(d.avgScore) + '/100';
+      if (d.medianPrice) document.getElementById('statMedPrice').textContent = Math.round(d.medianPrice).toLocaleString('fr-FR') + ' €';
+      if (d.avgKm) document.getElementById('statAvgKm').textContent = Math.round(d.avgKm/1000) + ' 000 km';
+      if (d.proPct) document.getElementById('statProPct').textContent = Math.round(d.proPct) + '%';
+
+      // Modèles top
+      if (d.byMake) {
+        var makes = Object.entries(d.byMake).sort(function(a,b){return b[1]-a[1];}).slice(0,6);
+        var html = '';
+        makes.forEach(function(m,i){
+          html += '<div class="obs-item" onclick="location.href='search.html?make='+encodeURIComponent(m[0])+''">';
+          html += '<span class="obs-rank">'+(i+1)+'.</span>';
+          html += '<span class="obs-item-name">'+m[0]+'</span>';
+          html += '<span class="obs-item-val">'+m[1].toLocaleString('fr-FR')+' ann.</span>';
+          html += '</div>';
+        });
+        document.getElementById('obsModels').innerHTML = html || '<div style="font-size:11px;color:var(--mu)">Données non disponibles</div>';
+      }
+
+      // Par pays
+      if (d.byCountry) {
+        var countries = Object.entries(d.byCountry).sort(function(a,b){return b[1]-a[1];});
+        var html = '';
+        countries.forEach(function(c){
+          var flags = {FR:'🇫🇷',DE:'🇩🇪',BE:'🇧🇪',NL:'🇳🇱',ES:'🇪🇸',IT:'🇮🇹',AT:'🇦🇹',GB:'🇬🇧',PL:'🇵🇱'};
+          html += '<div class="obs-item" onclick="location.href='search.html?country='+c[0]+''">';
+          html += '<span class="obs-item-name">'+(flags[c[0]]||'')+'  '+c[0]+'</span>';
+          html += '<span class="obs-item-val">'+c[1].toLocaleString('fr-FR')+'</span>';
+          html += '</div>';
+        });
+        document.getElementById('obsPays').innerHTML = html || '<div style="font-size:11px;color:var(--mu)">Données non disponibles</div>';
+      }
+
+      // Par carburant
+      if (d.byFuel) {
+        var fuels = Object.entries(d.byFuel).sort(function(a,b){return b[1]-a[1];});
+        var total = fuels.reduce(function(s,f){return s+f[1];},0);
+        var html = '';
+        fuels.slice(0,5).forEach(function(f){
+          var pct = total > 0 ? Math.round(f[1]/total*100) : 0;
+          html += '<div class="obs-item" onclick="location.href='search.html?fuel='+encodeURIComponent(f[0])+''">';
+          html += '<span class="obs-item-name">'+f[0]+'</span>';
+          html += '<span class="obs-item-val">'+pct+'%</span>';
+          html += '</div>';
+        });
+        document.getElementById('obsFuel').innerHTML = html || '<div style="font-size:11px;color:var(--mu)">Données non disponibles</div>';
+      }
+    });
+}
+
+// ── MARCHÉ ACTUEL ─────────────────────────────────────────────────────────────
+function updateMarche(achat, dest) {
+  var pa = PAYS[achat] || PAYS.DE;
+  document.getElementById('indiceRoute').textContent = achat + ' → ' + dest;
+  document.getElementById('marcheTitle').textContent = 'Données de marché — ' + pa.n;
+  document.getElementById('laCountry').textContent = 'en ' + pa.n;
+  document.getElementById('laSeeAll').onclick = function(){ location.href = 'search.html?country=' + achat; };
+
+  // Indice calculé
+  var scores = {
+    dispo: achat==='DE'?85:achat==='BE'?90:achat==='NL'?75:achat==='ES'?60:achat==='IT'?55:achat==='GB'?70:65,
+    prix:  achat==='DE'?78:achat==='BE'?82:achat==='NL'?72:achat==='ES'?65:achat==='IT'?60:achat==='GB'?55:68,
+    simple:achat==='DE'?65:achat==='BE'?88:achat==='NL'?72:achat==='ES'?50:achat==='IT'?45:achat==='GB'?30:60,
+    eco:   achat==='DE'?80:achat==='BE'?75:achat==='NL'?70:achat==='ES'?60:achat==='IT'?55:achat==='GB'?40:65,
+    docs:  achat==='DE'?88:achat==='BE'?92:achat==='NL'?85:achat==='ES'?78:achat==='IT'?75:achat==='GB'?50:80,
+  };
+  var global = Math.round((scores.dispo+scores.prix+scores.simple+scores.eco+scores.docs)/5);
+  document.getElementById('indiceN').textContent = global;
+  var lbl = global>=80?'Excellent':global>=70?'Très bon':global>=60?'Bon':global>=50?'Moyen':'Complexe';
+  document.getElementById('indiceLabel').textContent = lbl;
+  Object.keys(scores).forEach(function(k){
+    var barEl = document.getElementById('ibar-'+({'dispo':'dispo','prix':'prix','simple':'simple','eco':'eco','docs':'docs'}[k]));
+    var valEl = document.getElementById('iv-'+k);
+    if(barEl) barEl.style.width = scores[k]+'%';
+    if(valEl) valEl.textContent = scores[k];
+  });
+
+  // Annonces via API
+  fetch(API + '/api/vehicles?country=' + achat + '&limit=1', {signal: AbortSignal.timeout(5000)})
+    .then(function(r){ return r.ok?r.json():null; })
+    .catch(function(){ return null; })
+    .then(function(d) {
+      if (!d) return;
+      if (d.total) {
+        document.getElementById('msAnnonces').textContent = d.total.toLocaleString('fr-FR');
+        document.getElementById('hdAnnonces').textContent = d.total.toLocaleString('fr-FR');
+      }
+      if (d.avgPrice) {
+        document.getElementById('msPrixAchat').textContent = Math.round(d.avgPrice).toLocaleString('fr-FR') + ' €';
+      }
+      if (d.avgScore) {
+        document.getElementById('msScore').textContent = Math.round(d.avgScore) + '/100';
+      }
+      // Économie estimée
+      var eco = pa.eco;
+      document.getElementById('msEco').textContent = '−' + eco.toLocaleString('fr-FR') + ' €';
+
+      // Modèles dans annonces liées — approximation par marque connue
+      var models = [
+        {id:'la-golf',label:'Volkswagen Golf',url:'search.html?make=Volkswagen&model=Golf&country='+achat},
+        {id:'la-bmw',label:'BMW Série 3',url:'search.html?make=BMW&country='+achat},
+        {id:'la-audi',label:'Audi A4',url:'search.html?make=Audi&country='+achat},
+        {id:'la-merc',label:'Mercedes-Benz',url:'search.html?make=Mercedes-Benz&country='+achat},
+        {id:'la-toyota',label:'Toyota',url:'search.html?make=Toyota&country='+achat},
+      ];
+      models.forEach(function(m){
+        var el = document.getElementById(m.id);
+        if (el) {
+          var nameEl = el.querySelector('.la-name');
+          var countEl = el.querySelector('.la-count');
+          el.onclick = function(){ location.href = m.url; };
+          if (d.byMake) {
+            var key = m.label.split(' ')[0];
+            var cnt = d.byMake[key] || d.byMake[m.label] || null;
+            if (countEl && cnt) countEl.textContent = cnt.toLocaleString('fr-FR') + ' ann.';
+          }
+        }
+      });
+    });
+}
+
+// ── TIMELINE ──────────────────────────────────────────────────────────────────
+function buildTimeline(achat, dest) {
+  var isUK = achat === 'GB';
+  var steps = [
+    {title:'Recherche du véhicule',desc:'Vérification de l'historique, inspection photos, contact vendeur.',tags:['AutoDNA','1–5 jours'],done:false,active:true},
+    {title:'Vérification documentaire',desc:'Titre de propriété, CT, carnet d'entretien. Pour UK : HPI Check.',tags:[isUK?'HPI Check':'Fahrzeugbrief','1 jour'],done:false,active:false},
+    {title:'Paiement',desc:'Virement SEPA traçable recommandé. Conservez tous les justificatifs.',tags:['SEPA','1 jour'],done:false,active:false},
+    {title:'Transport',desc:'Assurance provisoire obligatoire. Plaques d'origine à conserver jusqu'en '+(dest==='FR'?'France':'destination')+'.',tags:['Assurance provisoire','1–3 jours'],done:false,active:false},
+    {title:isUK?'Dédouanement':'TVA et fiscalité',desc:isUK?'Déclaration douanière, droits applicables post-Brexit, COC obligatoire.':'Quitus fiscal ANTS (FR) ou équivalent selon pays de destination. Délai : 5–10 jours.',tags:[isUK?'Douanes':'ANTS','5–10 jours'],done:false,active:false},
+    {title:'Immatriculation',desc:'Demande carte grise ('+dest+'), délai 7–15 jours. COC simplifie la démarche.',tags:['Obligatoire','7–15 jours'],done:false,active:false},
+    {title:'Assurance définitive',desc:'Souscription avec la nouvelle immatriculation. Résiliation de l'assurance provisoire.',tags:['1 jour'],done:false,active:false},
+  ];
+
+  document.getElementById('tlMeta').textContent = achat + ' → ' + dest;
+  var html = '';
+  steps.forEach(function(s,i){
+    var cls = s.done?'done':s.active?'active':'';
+    html += '<div class="tl-item '+cls+'">';
+    html += '<div class="tl-dot"><div class="tl-line"></div><div class="tl-circle">'+(s.done?'✓':(i+1))+'</div></div>';
+    html += '<div class="tl-content">';
+    html += '<div class="tl-title" onclick="this.parentElement.parentElement.classList.toggle('active')">'+s.title+'</div>';
+    html += '<div class="tl-desc">'+s.desc+'</div>';
+    html += '<div class="tl-meta">';
+    s.tags.forEach(function(t){ html += '<span class="tl-tag">'+t+'</span>'; });
+    html += '</div></div></div>';
+  });
+  var c = document.getElementById('tlContainer');
+  if (c) c.innerHTML = html;
+}
+
+// ── SURCHARGER update() pour intégrer les nouvelles sections ──────────────────
+var _originalUpdate = update;
+update = function() {
+  _originalUpdate();
+  var dest  = document.getElementById('selDest').value;
+  var achat = document.getElementById('selAchat').value;
+  updateMarche(achat, dest);
+  buildTimeline(achat, dest);
+};
+
+// INIT nouvelles sections
+loadObservatoire();
+
+// Keyboard: close modal with Escape
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') closeAssistant();
+});
+
+</script>
+</body>
+</html>
